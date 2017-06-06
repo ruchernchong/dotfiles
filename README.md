@@ -13,6 +13,7 @@ $ git clone https://github.com/ruchern/dotfiles ~/dotfiles
 $ cd ~/dotfiles
 $ chmod a+x setup.sh
 $ ./setup.sh
+```
 
 ## License
 This code is available under the [MIT License](LICENSE)
