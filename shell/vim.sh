@@ -3,4 +3,4 @@
 echo -e "Updating your Vim setup and configuration..."
 
 ln -s ~/dotfiles/.vim ~/.vim
-ln -s ~/dotfiles/.vimrc ~/.vim
+ln -s ~/dotfiles/.vimrc ~/.vimrc
