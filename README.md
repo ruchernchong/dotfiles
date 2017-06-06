@@ -5,7 +5,7 @@ This repository contains dotfiles and scripts that I used to customise my macOS 
 ## Features
 - Common git aliases that is being used on a day-to-day basis
 - Customised oh-my-zsh settings
-- Setup script
+- [Setup script](setup.sh)
 
 ## Installation
 ```bash
