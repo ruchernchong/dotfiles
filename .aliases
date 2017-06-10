@@ -1,3 +1,5 @@
+# Pure custom git alias that suits my preference. This has no relevance to any other git alias that you may have seen from somewhere else 
+
 alias g='git';
 alias gcl='git clone --recursive';
 alias gs='git status';
@@ -15,8 +17,11 @@ alias gp='git push';
 alias gd='git diff';
 alias gm='git merge';
 
+# Miscellaneous aliases
 alias ll="ls -la";
 
+# Custom directory aliases
+alias project='cd ~/Projects';
 alias sites='cd ~/Sites';
 
 # Laravel Alias
