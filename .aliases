@@ -25,5 +25,5 @@ alias project='cd ~/Projects';
 alias sites='cd ~/Sites';
 
 # Laravel Alias
-alias artisan="php artisan";
-alias tinker="php artisan tinker";
+alias pa="php artisan";
+alias pa:tinker="php artisan tinker";
