@@ -3,6 +3,7 @@
 This repository contains dotfiles and scripts that I used to customise my macOS and development workflow I use on a day-to-day basis. You are free to use this as a reference for your own setup. WIP.
 
 ## Features
+- Install Oh-My-Zsh by default
 - Common git aliases that is being used on a day-to-day basis
 - Customised oh-my-zsh settings
 - [Setup script](setup.sh)
