@@ -21,6 +21,10 @@ alias gm='git merge';
 alias ll="ls -la";
 
 # Custom directory aliases
+if [[ "`$uname`" == 'Linux' ]]; then
+  alias htdocs='cd /var/www/htdocs';
+fi
+
 alias project='cd ~/Projects';
 alias sites='cd ~/Sites';
 
