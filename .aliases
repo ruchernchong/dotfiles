@@ -1,0 +1,23 @@
+alias g='git';
+alias gs='git status';
+alias gcm='git checkout master';
+alias gcd='git checkout develop';
+alias gco='git checkout';
+alias ga='git add';
+alias gaa='git add --all';
+alias gc='git commit -s';
+alias gf='git fetch';
+alias gfa='git fetch --all';
+alias gl='git pull';
+alias gla='git pull --all';
+alias gp='git push';
+alias gd='git diff';
+alias gm='git merge';
+
+alias ll="ls -la";
+
+alias sites='cd ~/Sites';
+
+# Laravel Alias
+alias artisan="php artisan";
+alias tinker="php artisan tinker";
