@@ -1,4 +1,5 @@
 alias g='git';
+alias gcl='git clone --recursive';
 alias gs='git status';
 alias gcm='git checkout master';
 alias gcd='git checkout develop';
