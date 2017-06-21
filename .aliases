@@ -1,11 +1,13 @@
 # Pure custom git alias that suits my preference. This has no relevance to any other git alias that you may have seen from somewhere else 
 
 alias g='git';
+alias gba='git branch -a';
 alias gcl='git clone --recursive';
 alias gs='git status';
 alias gcm='git checkout master';
 alias gcd='git checkout develop';
 alias gco='git checkout';
+alias gcb='git checkout -b';
 alias ga='git add';
 alias gaa='git add --all';
 alias gc='git commit -s';
