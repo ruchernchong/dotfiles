@@ -27,7 +27,7 @@ if [[ "$OSTYPE" == 'linux-gnu' ]]; then
   alias htdocs='cd /var/www/htdocs';
 fi
 
-alias project='cd ~/Projects';
+alias projects='cd ~/Projects';
 alias sites='cd ~/Sites';
 
 # Laravel Alias
