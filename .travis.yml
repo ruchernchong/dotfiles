@@ -1,13 +1,12 @@
 language: bash
 
+sudo: required
+
 before_install:
   - sudo apt-get update
 
 install:
-  - sudo apt-get -y install curl zsh
-
-before_install:
-  - sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\""
+  - sudo apt-get -y install zsh
 
 script:
-  - bash setup.sh
+  - bash travis.sh
