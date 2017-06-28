@@ -16,6 +16,7 @@ alias gf='git fetch';
 alias gfa='git fetch --all';
 alias gl='git pull';
 alias gla='git pull --all';
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gp='git push';
 alias gd='git diff';
 alias gm='git merge';
