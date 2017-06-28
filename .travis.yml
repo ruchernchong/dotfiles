@@ -16,3 +16,6 @@ install:
 
 script:
   - bash travis.sh
+
+notifications:
+  email: false
