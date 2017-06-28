@@ -1,9 +1,14 @@
 language: bash
 
+os: 
+  - linux
+  - osx
+
 sudo: required
 
 before_install:
-  - sudo apt-get update
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
 
 install:
   - sudo apt-get -y install zsh
