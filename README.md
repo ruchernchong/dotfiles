@@ -1,4 +1,5 @@
 # Ru Chern's Dotfiles
+[![Build Status](https://travis-ci.org/ruchern/dotfiles.svg?branch=master)](https://travis-ci.org/ruchern/dotfiles)
 
 This repository contains dotfiles and scripts that I used to customise my macOS and development workflow I use on a day-to-day basis. You are free to use this as a reference for your own setup. WIP.
 
