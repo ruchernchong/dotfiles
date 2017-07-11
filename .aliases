@@ -20,6 +20,7 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset
 alias gp='git push';
 alias gd='git diff';
 alias gm='git merge';
+alias grb='git rebase';
 
 # Miscellaneous aliases
 alias ll="ls -la";
