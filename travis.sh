@@ -4,7 +4,7 @@
 timerStart=$(date +%s)
 
 echo "------------------------------------------------"
-echo -e $COL_YELLOW"Setting up your macOS development environment..."$COL_RESET
+echo -e $COL_YELLOW"Setting up your system development environment..."$COL_RESET
 echo "------------------------------------------------"
 
 ###############################################################################
