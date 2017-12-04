@@ -89,3 +89,7 @@ alias zshreload="source ~/.zshrc"
 source ~/.aliases
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+if [[ "$OSTYPE" = 'linux-gnu' ]]; then
+    export PATH=~/.npm-global/bin:$PATH
+fi
