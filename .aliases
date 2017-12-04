@@ -32,6 +32,7 @@ fi
 
 alias projects='cd ~/Projects';
 alias sites='cd ~/Sites';
+alias vue='cd ~/Vue';
 
 # Laravel Alias
 alias pa="php artisan";
