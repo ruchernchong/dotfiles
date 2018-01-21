@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Starting script\n"
+echo -e "Starting script\n"
 timerStart=$(date +%s)
 
 echo "------------------------------------------------"
@@ -29,7 +29,7 @@ timerStop=$(date +%s)
 duration=$(expr $timerStop - $timerStart)
 
 if [ $duration -lt 60 ]; then
-    echo "Time taken: $(($duration % 60)) seconds\n"
+    echo -e "Time taken: $(($duration % 60)) seconds"
 else
-    echo "Time taken: $(($duration / 60)) minutes and $(($duration % 60)) seconds\n"
+    echo -e "Time taken: $(($duration / 60)) minutes and $(($duration % 60)) seconds"
 fi 
