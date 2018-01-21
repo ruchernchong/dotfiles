@@ -15,7 +15,9 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install zsh; fi
 
 script:
+  - chmod a+x travis.sh setup-cron-jobs.sh
   - bash travis.sh
+  - bash setup-cron-jobs.sh
 
 notifications:
   email: false
