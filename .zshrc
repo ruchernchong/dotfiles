@@ -88,6 +88,7 @@ alias zshreload="source ~/.zshrc"
 
 source ~/.aliases
 export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/sbin:$PATH"
 
 if [[ "$OSTYPE" = 'linux-gnu' ]]; then
