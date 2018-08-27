@@ -16,7 +16,7 @@ This repository contains dotfiles and scripts that I used to customise my macOS/
 ```bash
 $ git clone https://github.com/ruchern/dotfiles.git ~/dotfiles
 $ cd ~/dotfiles
-$ chmod a+x *.sh
+$ chmod a+x setup.sh
 $ ./setup.sh
 ```
 
