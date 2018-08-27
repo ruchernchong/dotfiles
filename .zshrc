@@ -87,6 +87,7 @@ alias zshreload="source ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.aliases
+
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/sbin:$PATH"
