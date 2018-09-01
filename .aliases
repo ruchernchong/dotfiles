@@ -31,6 +31,7 @@ if [[ "$OSTYPE" == 'linux-gnu' ]]; then
 fi
 
 alias nodep='cd ~/Nodejs';
+alias react='cd ~/React/';
 alias vueproj='cd ~/Vue';
 alias sites='cd ~/Sites';
 
