@@ -7,13 +7,13 @@ echo "------------------------------------------------"
 echo -e $COL_YELLOW"Setting up your macOS/Linux development environment..."$COL_RESET
 echo "------------------------------------------------"
 
-chmod a+x *.sh
+chmod a+x setup/*.sh
 
-##############################################################################
-# Installing Oh-My-Zsh                                                       #
-##############################################################################
-
-./install-oh-my-zsh.sh
+SETUP_SCRIPTS=./setup/*
+for file in $SETUP_SCRIPTS; do
+    filename=$(basename "$file")
+    ./$file
+done
 
 ###############################################################################
 # Shell Scripts                                                               #
