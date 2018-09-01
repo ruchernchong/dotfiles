@@ -95,3 +95,4 @@ export PATH="/usr/local/sbin:$PATH"
 if [[ "$OSTYPE" = 'linux-gnu' ]]; then
     export PATH=~/.npm-global/bin:$PATH
 fi
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
