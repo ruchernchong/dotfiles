@@ -17,7 +17,6 @@ install:
 script:
   - chmod a+x *.sh
   - bash travis.sh
-  - bash setup-cron-jobs.sh
 
 notifications:
   email: false
