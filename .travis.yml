@@ -15,7 +15,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install zsh; fi
 
 script:
-  - chmod a+x *.sh
+  - chmod a+x shell/*.sh
   - bash travis.sh
   - composer
 
