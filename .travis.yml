@@ -17,6 +17,7 @@ install:
 script:
   - chmod a+x *.sh
   - bash travis.sh
+  - composer
 
 notifications:
   email: false
