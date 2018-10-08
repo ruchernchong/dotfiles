@@ -2,6 +2,7 @@ language: bash
 
 os: 
   - linux
+  dist: xenial
   - osx
 
 sudo: required
@@ -19,7 +20,7 @@ script:
   - bash setup.sh
   - chmod a+x shell/*.sh
   - bash travis.sh
-  - composer
+  - command -v composer
 
 notifications:
   email: false
