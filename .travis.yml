@@ -7,12 +7,8 @@ os:
 sudo: required
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
-
-install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -y install zsh; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install zsh; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update && sudo apt-get -y install zsh; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew install zsh; fi
 
 script:
   - chmod a+x shell/*.sh
