@@ -4,6 +4,8 @@ os:
   - linux
   - osx
 
+dist: xenial
+
 sudo: required
 
 before_install:
