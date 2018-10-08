@@ -2,7 +2,6 @@ language: bash
 
 os: 
   - linux
-  dist: xenial
   - osx
 
 dist: xenial
