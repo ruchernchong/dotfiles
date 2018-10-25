@@ -8,7 +8,11 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="clean-custom"
+#ZSH_THEME="clean-custom"
+ZSH_THEME="spaceship"
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_USER_SHOW=always
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,7 +56,9 @@ ZSH_THEME="clean-custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git)
+plugins=(
+zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,4 +101,5 @@ export PATH="/usr/local/sbin:$PATH"
 if [[ "$OSTYPE" = 'linux-gnu' ]]; then
     export PATH=~/.npm-global/bin:$PATH
 fi
+
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
