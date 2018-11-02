@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo -e "Requesting for Administator's privileges"
+sudo -v
+
 echo -e "Starting script\n"
 timerStart=$(date +%s)
 
