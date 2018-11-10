@@ -15,9 +15,6 @@ before_install:
 script:
   - chmod a+x setup/*.sh
   - bash setup.sh
-  - chmod a+x shell/*.sh
-  - bash travis.sh
-  - command -v composer
 
 notifications:
   email: false
