@@ -27,7 +27,7 @@ source setup.sh
 
 ## Feedback
 
-I welcome any feedbacks or suggestions for this by creating an [issue](https://github.com/ruchern/dotfiles/issues) or creating a [pull request](https://github.com/ruchern/dotfiles/pulls).
+I welcome any feedbacks or suggestions by creating an [issue](https://github.com/ruchern/dotfiles/issues) or a [pull request](https://github.com/ruchern/dotfiles/pulls).
 
 ## Author
 
