@@ -25,6 +25,12 @@ chmod a+x setup.sh
 source setup.sh
 ```
 
+## Author
+
+| [![twitter/ruchern_](http://gravatar.com/avatar/ca46c3c4924097de7e4d92f80cda8e21)](https://twitter.com/ruchern_ "Follow @ruchern_ on Twitter) |
+|---|
+| [Ru Chern](https://ruchern.com) |
+
 ## License
 
 This code is available under the [MIT License](LICENSE)
