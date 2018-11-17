@@ -13,12 +13,16 @@ This repository contains dotfiles and scripts that I used to customise my macOS/
 - Cron job(s) to clean cache on a weekly basis
 
 ## Installation
+
+**Warning:** Do not blindly use my settings as it may override or modify some of your own configuration. You can use this as a reference. It is highly recommended to clone/fork this repository to another folder. Use at your own risk!
+
 ```bash
-$ git clone https://github.com/ruchern/dotfiles.git ~/dotfiles
-$ cd ~/dotfiles
-$ chmod a+x setup.sh
-$ ./setup.sh
+git clone https://github.com/ruchern/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+chmod a+x setup.sh
+source setup.sh
 ```
 
 ## License
+
 This code is available under the [MIT License](LICENSE)
