@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo -e "Updating your VS Code configuration..."
+
+rm -rf ~/Library/Application\ Support/Code/User/snippets/
+rm -f ~/Library/Application\ Support/Code/User/settings.json
+
+ln -s ~/dotfiles/Code/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -s ~/dotfiles/Code/snippets ~/Library/Application\ Support/Code/User/snippets
