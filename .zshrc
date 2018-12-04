@@ -7,12 +7,33 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="clean-custom"
-#ZSH_THEME="spaceship"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_USER_SHOW=always
+POWERLEVEL9K_MODE="nerdfont-complete"
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  os_icon
+  dir
+  dir_writable
+  vcs
+)
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
+  status
+  nvm
+  node_version
+  time
+)
+
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON="\uf408"
+POWERLEVEL9K_HIDE_BRANCH_ICON="true"
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND="white"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
