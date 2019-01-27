@@ -27,12 +27,6 @@ source setup.sh
 
 I welcome any feedbacks or suggestions by creating an [issue](https://github.com/ruchern/dotfiles/issues) or a [pull request](https://github.com/ruchern/dotfiles/pulls).
 
-## Author
-
-| [![twitter/ruchern_](http://gravatar.com/avatar/ca46c3c4924097de7e4d92f80cda8e21)](https://twitter.com/ruchern_ "Follow @ruchern_ on Twitter") |
-|---|
-| [Ru Chern](https://ruchern.com) |
-
 ## License
 
 This code is available under the [MIT License](LICENSE)
