@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 echo -e "Updating your Zsh setup and configuration..."
 

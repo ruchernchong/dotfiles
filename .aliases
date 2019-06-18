@@ -27,14 +27,4 @@ alias ll="ls -la";
 alias bp="bundle-phobia";
 
 # Custom directory aliases
-if [[ "$OSTYPE" == 'linux-gnu' ]]; then
-  alias htdocs='cd /var/www/htdocs';
-fi
-
-alias nodep='cd ~/Nodejs';
-alias vueproj='cd ~/Vue';
-alias sites='cd ~/Sites';
-
-# Laravel Alias
-alias pa="php artisan";
-alias pa:tinker="php artisan tinker";
+alias proj='cd ~/Projects';
