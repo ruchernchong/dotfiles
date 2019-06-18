@@ -24,6 +24,7 @@ alias grb='git rebase';
 
 # Miscellaneous aliases
 alias ll="ls -la";
+alias bp="bundle-phobia";
 
 # Custom directory aliases
 if [[ "$OSTYPE" == 'linux-gnu' ]]; then
