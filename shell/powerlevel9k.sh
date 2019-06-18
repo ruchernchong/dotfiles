@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/zsh
 
 echo -e "Installing Powerlevel9k theme"
 

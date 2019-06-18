@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 echo -e "Requesting for Administator's privileges"
 sudo -v

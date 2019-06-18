@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=~/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -116,10 +116,6 @@ source ~/.aliases
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/sbin:$PATH"
-
-if [[ "$OSTYPE" = 'linux-gnu' ]]; then
-    export PATH=~/.npm-global/bin:$PATH
-fi
 
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
