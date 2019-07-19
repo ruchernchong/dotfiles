@@ -10,7 +10,7 @@ echo "------------------------------------------------"
 echo -e $COL_YELLOW"Setting up your macOS/Linux development environment..."$COL_RESET
 echo "------------------------------------------------"
 
-chmod a+x setup/*.sh
+chmod a+x ./**/*.sh
 
 SETUP_SCRIPTS=./setup/*
 for file in $SETUP_SCRIPTS; do
@@ -22,7 +22,7 @@ done
 # Shell Scripts                                                               #
 ###############################################################################
 
-chmod a+x shell/*.sh
+chmod a-x ./**/*.sh
 
 # Execute the base scripts
 SHELL_FILES=./shell/*
