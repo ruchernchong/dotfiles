@@ -11,5 +11,4 @@ script:
   - chmod a+x setup.sh && source setup.sh
   - command -v brew
   - command -v npm
-  - command -v yarn
   - command -v node
