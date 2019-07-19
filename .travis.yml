@@ -1,0 +1,7 @@
+os:
+  - osx
+
+script:
+  - command -v npm
+  - command -v yarn
+  - command -v node
