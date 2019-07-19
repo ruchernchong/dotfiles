@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 echo -e "Requesting for Administator's privileges"
-sudo -v
+sudo true
 
 echo -e "Starting script\n"
 timerStart=$(date +%s)
