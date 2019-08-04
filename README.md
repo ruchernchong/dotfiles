@@ -18,7 +18,7 @@ This repository contains dotfiles and scripts that I used to customise my macOS/
 ### OTA installation
 
 ```zsh
-curl -L https://raw.githubusercontent.com/ruchern/dotfiles/master/setup.sh | bash
+curl -L https://raw.githubusercontent.com/ruchern/dotfiles/master/install.sh | bash
 ```
 
 ### Cloning the repository
