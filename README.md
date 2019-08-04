@@ -10,11 +10,18 @@ This repository contains dotfiles and scripts that I used to customise my macOS/
 - Common git aliases that is being used on a day-to-day basis
 - Customised oh-my-zsh settings
 - [Setup script](setup.sh)
-- Cron job(s) to clean cache on a weekly basis
 
 ## Installation
 
 **Warning:** Do not blindly use my settings as it may override or modify some of your own configuration. You can use this as a reference. It is highly recommended to clone/fork this repository to another folder. Use at your own risk!
+
+### OTA installation
+
+```zsh
+curl -L https://raw.githubusercontent.com/ruchern/dotfiles/master/setup.sh | bash
+```
+
+### Cloning the repository
 
 ```zsh
 git clone https://github.com/ruchern/dotfiles.git ~/dotfiles
