@@ -1,7 +1,7 @@
 {
   "editor.fontSize": 15,
   "files.autoSave": "onFocusChange",
-  "workbench.colorTheme": "Slime",
+  "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": false,
   "explorer.openEditors.visible": 0,
@@ -26,5 +26,9 @@
   "editor.formatOnSave": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.fontFamily": "Hack Nerd Font"
 }
