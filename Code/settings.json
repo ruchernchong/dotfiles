@@ -1,6 +1,6 @@
 {
   "editor.fontSize": 15,
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "onWindowChange",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": false,
