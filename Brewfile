@@ -27,9 +27,7 @@ brew cask upgrade
 
 casks=(
 	"coconutbattery"
-	"docker"
-	"font-hack-nerd-font"
-	"iina"
+	"insomnia"
 	"postman"
 )
 
