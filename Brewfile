@@ -7,6 +7,7 @@ echo "Upgrading Homebrew installed packages"
 brew upgrade
 
 packages=(
+	"github/gh/gh"
 	"mas"
 	"node"
 	"nvm"
