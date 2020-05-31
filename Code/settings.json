@@ -6,7 +6,6 @@
   "workbench.statusBar.visible": false,
   "explorer.openEditors.visible": 0,
   "explorer.confirmDelete": false,
-  "workbench.editor.showTabs": false,
   "javascript.validate.enable": false,
   "sync.gist": "6a7cedb53d8bd7891c825467bef11fb8",
   "sync.lastUpload": "2018-05-05T06:31:30.855Z",
@@ -30,5 +29,7 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "terminal.integrated.fontFamily": "Hack Nerd Font"
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
