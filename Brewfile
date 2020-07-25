@@ -11,7 +11,6 @@ packages=(
 	"mas"
 	"node"
 	"nvm"
-	"speedtest-cli"
 	"yarn"
 )
 
@@ -29,6 +28,7 @@ casks=(
 	"coconutbattery"
 	"insomnia"
 	"postman"
+	"sourcetree"
 )
 
 echo "Installing Homebrew cask apps"
