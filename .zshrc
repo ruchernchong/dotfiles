@@ -88,6 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias pip=/opt/homebrew/bin/pip3
 alias python=/usr/local/bin/python3
 alias zshconfig="vi ~/.zshrc"
 alias zshreload="source ~/.zshrc"
