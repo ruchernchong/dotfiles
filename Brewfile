@@ -1,9 +1,7 @@
 echo "Updating Homebrew"
-
 brew update
 
 echo "Upgrading Homebrew installed packages"
-
 brew upgrade
 
 packages=(
@@ -15,27 +13,25 @@ packages=(
 )
 
 echo "Installing Homebrew packages"
-
 for package in "${packages[@]}"; do
 	brew install "$package"
 done
 
 echo "Upgrading Homebrew cask apps"
-
-brew cask upgrade
+brew upgrade --casks
 
 casks=(
 	"coconutbattery"
-	"insomnia"
 	"postman"
-	"sourcetree"
 )
 
 echo "Installing Homebrew cask apps"
-
 for cask in "${casks[@]}"; do
 	brew cask install "$cask"
 done
+
+echo "Installing Brew Tab Completion"
+brew install brew-cask-completion
 
 echo "Cleaning up..."
 
