@@ -103,10 +103,12 @@ export PATH="/usr/local/sbin:$PATH"
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+function gi() { 
+  curl -L -s https://www.gitignore.io/api/$@ ;
+}
 
 function enrollDevBeta() {
   sudo /System/Library/PrivateFrameworks/Seeding.framework/Versions/A/Resources/seedutil enroll DeveloperSeed
