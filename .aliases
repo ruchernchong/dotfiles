@@ -24,4 +24,3 @@ alias grb='git rebase';
 
 # Miscellaneous aliases
 alias ll="ls -la";
-alias bp="bundle-phobia";
