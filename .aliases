@@ -1,5 +1,6 @@
 # Pure custom git alias that suits my preference. This has no relevance to any other git alias that you may have seen from somewhere else 
 
+alias gh='gh';
 alias g='git';
 alias gb='git branch';
 alias gba='git branch -a';
