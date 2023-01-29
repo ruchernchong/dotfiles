@@ -127,3 +127,4 @@ function fixUniversalClipboard() {
 	defaults write ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
 }
 
+source /Users/ruchern/.config/op/plugins.sh
