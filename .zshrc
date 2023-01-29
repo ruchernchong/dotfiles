@@ -121,3 +121,8 @@ function unenrollBeta() {
 function enrollPublicBeta() {
   sudo /System/Library/PrivateFrameworks/Seeding.framework/Versions/A/Resources/seedutil enroll PublicSeed
 }
+
+function fixUniversalClipboard() {
+	defaults write ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
+}
+
