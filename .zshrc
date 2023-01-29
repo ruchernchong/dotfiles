@@ -124,6 +124,7 @@ function enrollPublicBeta() {
 }
 
 function fixUniversalClipboard() {
+	defaults delete ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled
 	defaults write ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
 }
 
