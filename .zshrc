@@ -96,6 +96,11 @@ alias zshreload="source ~/.zshrc"
 
 source ~/.aliases
 
+# pnpm
+export PNPM_HOME="/Users/ruchern/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
 export PATH="$PATH:`yarn global bin`"
 export PATH="/usr/local/sbin:$PATH"
 
