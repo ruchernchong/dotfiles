@@ -115,18 +115,6 @@ function gi() {
   curl -L -s https://www.gitignore.io/api/$@ ;
 }
 
-function enrollDevBeta() {
-  sudo /System/Library/PrivateFrameworks/Seeding.framework/Versions/A/Resources/seedutil enroll DeveloperSeed
-}
-
-function unenrollBeta() {
-  sudo /System/Library/PrivateFrameworks/Seeding.framework/Versions/A/Resources/seedutil unenroll
-}
-
-function enrollPublicBeta() {
-  sudo /System/Library/PrivateFrameworks/Seeding.framework/Versions/A/Resources/seedutil enroll PublicSeed
-}
-
 function fixUniversalClipboard() {
 	defaults delete ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled
 	defaults write ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
