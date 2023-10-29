@@ -121,3 +121,6 @@ function fixUniversalClipboard() {
 }
 
 source /Users/ruchern/.config/op/plugins.sh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
