@@ -88,8 +88,10 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias pip=/opt/homebrew/bin/pip3
-alias python=/usr/local/bin/python3
+#alias pip=/opt/homebrew/bin/pip3
+alias pip=~/.venv/bin/pip
+#alias python=/usr/local/bin/python3
+alias python=~/.venv/bin/python
 alias zshconfig="vi ~/.zshrc"
 alias zshreload="source ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -124,3 +126,5 @@ source /Users/ruchern/.config/op/plugins.sh
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+source ~/.venv/bin/activate
