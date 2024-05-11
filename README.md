@@ -18,13 +18,13 @@ This repository contains dotfiles and scripts that I used to customise my macOS/
 ### OTA installation
 
 ```zsh
-curl -L https://raw.githubusercontent.com/ruchern-chong/dotfiles/master/install.sh | bash
+curl -L https://raw.githubusercontent.com/ruchernchong/dotfiles/master/install.sh | bash
 ```
 
 ### Cloning the repository
 
 ```zsh
-git clone https://github.com/ruchern-chong/dotfiles.git ~/dotfiles
+git clone https://github.com/ruchernchong/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 chmod a+x setup.sh
 source setup.sh
@@ -32,7 +32,7 @@ source setup.sh
 
 ## Feedback
 
-I welcome any feedbacks or suggestions by creating an [issue](https://github.com/ruchern-chong/dotfiles/issues) or a [pull request](https://github.com/ruchern-chong/dotfiles/pulls).
+I welcome any feedbacks or suggestions by creating an [issue](https://github.com/ruchernchong/dotfiles/issues) or a [pull request](https://github.com/ruchernchong/dotfiles/pulls).
 
 ## License
 
