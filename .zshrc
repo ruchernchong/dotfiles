@@ -98,6 +98,10 @@ alias zshreload="source ~/.zshrc"
 
 source ~/.aliases
 
+if [ -f /usr/local/etc/bash_completion ]; then
+    . /usr/local/etc/bash_completion
+fi
+
 # pnpm
 export PNPM_HOME="/Users/ruchern/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
