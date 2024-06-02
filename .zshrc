@@ -131,3 +131,4 @@ source /Users/ruchern/.config/op/plugins.sh
 autoload -U +X bashcompinit && bashcompinit
 
 alias venv="source venv/bin/activate"
+function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
