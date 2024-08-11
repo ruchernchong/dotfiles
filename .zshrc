@@ -123,7 +123,7 @@ function fixUniversalClipboard() {
 
 source /Users/ruchern/.config/op/plugins.sh
 
-autoload -U +X bashcompinit && bashcompinit
+#autoload -U +X bashcompinit && bashcompinit
 
 alias venv="source venv/bin/activate"
 
