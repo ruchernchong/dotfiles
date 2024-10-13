@@ -16,6 +16,8 @@ export ZSH=~/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -58,7 +60,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git)
+plugins=(
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-autocomplete
+poetry)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +103,8 @@ source ~/.aliases
 if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
+
+export PATH="/Users/ruchern/.local/bin:$PATH"
 
 # Homebrew
 export HOMEBREW_NO_AUTO_UPDATE=1
