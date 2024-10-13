@@ -63,7 +63,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 plugins=(
 zsh-autosuggestions
 zsh-syntax-highlighting
-zsh-autocomplete
+#zsh-autocomplete
 poetry)
 
 source $ZSH/oh-my-zsh.sh
