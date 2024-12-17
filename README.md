@@ -71,6 +71,26 @@ git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 chmod a+x setup.sh
 source setup.sh
+
+# Set up Git Hooks
+git config core.hooksPath .githooks
+chmod +x .githooks/post-commit
+```
+
+### Git Hooks Setup
+
+This repository includes a post-commit hook for automatically updating and committing the Brewfile:
+
+- Located in `.githooks/post-commit`
+- Automatically runs `brew bundle dump`
+- Stages and commits Brewfile changes
+- Requires manual activation after cloning
+
+To enable the hook:
+
+```zsh
+git config core.hooksPath .githooks
+chmod +x .githooks/post-commit
 ```
 
 ## Feedback
