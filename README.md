@@ -74,14 +74,14 @@ source setup.sh
 
 # Set up Git Hooks
 git config core.hooksPath .githooks
-chmod +x .githooks/post-commit
+chmod +x .githooks/post-push
 ```
 
 ### Git Hooks Setup
 
-This repository includes a post-commit hook for automatically updating and committing the Brewfile:
+This repository includes a post-push hook for automatically updating and committing the Brewfile:
 
-- Located in `.githooks/post-commit`
+- Located in `.githooks/post-push`
 - Automatically runs `brew bundle dump`
 - Stages and commits Brewfile changes
 - Requires manual activation after cloning
@@ -90,7 +90,7 @@ To enable the hook:
 
 ```zsh
 git config core.hooksPath .githooks
-chmod +x .githooks/post-commit
+chmod +x .githooks/post-push
 ```
 
 ## Feedback
