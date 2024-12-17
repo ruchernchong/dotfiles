@@ -19,11 +19,12 @@ set ignorecase
 set smartcase
 
 " UI and usability
-set relativenumber
+set ruler
 set cursorline
 set wildmenu
 set showcmd
 set laststatus=2
+set title
 
 " Performance and compatibility
 set ttyfast
