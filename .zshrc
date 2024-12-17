@@ -48,8 +48,8 @@ export NVM_DIR="$HOME/.nvm"
 source $HOME/.aliases
 source $HOME/.p10k.zsh
 source $HOME/.config/op/plugins.sh
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/completion.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # Bash Completion
 if [ -f /usr/local/etc/bash_completion ]; then
