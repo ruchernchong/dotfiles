@@ -22,8 +22,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
 # Plugins
 plugins=(
-zsh-autosuggestions
-zsh-syntax-highlighting
+  colored-man-pages
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
