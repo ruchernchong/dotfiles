@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# Run brew bundle dump
+brew bundle dump --force
+
+# Add the updated Brewfile to git staging
+git add Brewfile
+
+# Commit with a standard message
+git commit -m "Update Brewfile"
+
+# Push the changes
+git push
