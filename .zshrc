@@ -64,7 +64,8 @@ plugins=(
 zsh-autosuggestions
 zsh-syntax-highlighting
 #zsh-autocomplete
-poetry)
+  poetry
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,7 +97,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="vi ~/.zshrc"
 alias zshreload="source ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.aliases
 
@@ -104,14 +104,12 @@ if [ -f /usr/local/etc/bash_completion ]; then
     . /usr/local/etc/bash_completion
 fi
 
-export PATH="/Users/ruchern/.local/bin:$PATH"
-
 # Homebrew
 export HOMEBREW_NO_AUTO_UPDATE=1
 # Homebrew end
 
 # pnpm
-export PNPM_HOME="/Users/ruchern/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
@@ -121,7 +119,7 @@ export NEXT_TELEMETRY_DISABLED=1
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 function gi() { 
-  curl -L -s https://www.gitignore.io/api/$@ ;
+  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;
 }
 
 function fixUniversalClipboard() {
@@ -129,13 +127,11 @@ function fixUniversalClipboard() {
 	defaults write ~/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
 }
 
-source /Users/ruchern/.config/op/plugins.sh
+source $HOME/.config/op/plugins.sh
 
-#autoload -U +X bashcompinit && bashcompinit
+autoload -U +X bashcompinit && bashcompinit
 
 alias venv="source venv/bin/activate"
-
-function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
 
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
@@ -143,3 +139,7 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(direnv hook zsh)"
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
