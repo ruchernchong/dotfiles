@@ -25,3 +25,6 @@ alias grb='git rebase';
 
 # Miscellaneous aliases
 alias ll="ls -la";
+
+# Directory aliases
+alias sgcarstrends="cd $HOME/projects/@sgcarstrends"
