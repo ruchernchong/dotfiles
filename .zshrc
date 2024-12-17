@@ -30,15 +30,14 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # Path Configurations
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.12/libexec/bin:$PATH"
+export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
+export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 
 # Environment Variables
 export HOMEBREW_NO_AUTO_UPDATE=1
 export NEXT_TELEMETRY_DISABLED=1
-export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="$HOME/Library/pnpm"
 
 # NVM Configuration
 export NVM_DIR="$HOME/.nvm"
@@ -49,8 +48,8 @@ export NVM_DIR="$HOME/.nvm"
 source $HOME/.aliases
 source $HOME/.p10k.zsh
 source $HOME/.config/op/plugins.sh
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/completion.zsh.inc"
 
 # Bash Completion
 if [ -f /usr/local/etc/bash_completion ]; then
