@@ -24,7 +24,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 plugins=(
 zsh-autosuggestions
 zsh-syntax-highlighting
-  poetry
 )
 
 source $ZSH/oh-my-zsh.sh
