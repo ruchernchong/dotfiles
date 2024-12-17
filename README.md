@@ -1,4 +1,4 @@
-# Ru Chern's Dotfiles
+# dotfiles
 
 This repository contains dotfiles and scripts that I use to customize my macOS/Linux development workflow. Feel free to use this as a reference for your own setup.
 
