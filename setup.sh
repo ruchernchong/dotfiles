@@ -39,4 +39,8 @@ if [ $duration -lt 60 ]; then
     echo -e "Time taken: $(($duration % 60)) seconds"
 else
     echo -e "Time taken: $(($duration / 60)) minutes and $(($duration % 60)) seconds"
-fi 
+fi
+
+# Install Homebrew packages
+echo "Installing Homebrew packages"
+brew bundle install
