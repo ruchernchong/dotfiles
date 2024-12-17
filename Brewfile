@@ -3,16 +3,12 @@ tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "libsql/sqld"
-tap "minacle/chntpw"
 tap "mongodb/brew"
 tap "ngrok/ngrok"
 tap "oven-sh/bun"
-tap "planetscale/tap"
 tap "pulumi/tap"
-tap "sidneys/homebrew"
 tap "sst/tap"
 tap "stripe/stripe-cli"
-tap "supabase/tap"
 tap "teamookla/speedtest"
 tap "tursodatabase/tap"
 brew "act"
@@ -27,7 +23,6 @@ brew "aria2"
 brew "pycparser"
 brew "cffi"
 brew "cryptography"
-brew "python@3.12"
 brew "aws-sam-cli"
 brew "bash"
 brew "bash-completion"
@@ -43,6 +38,7 @@ brew "gh"
 brew "openjpeg"
 brew "ghostscript"
 brew "git"
+brew "unbound"
 brew "netpbm"
 brew "groff"
 brew "libheif"
@@ -52,36 +48,46 @@ brew "lima"
 brew "lzip"
 brew "node"
 brew "mongosh"
-brew "mongodb-atlas-cli"
 brew "neonctl"
 brew "ollama", restart_service: true
 brew "opentofu"
 brew "pnpm"
-brew "postgresql@16"
 brew "postgresql@17"
+brew "python@3.12"
 brew "python-tk@3.12"
 brew "qemu"
-brew "redis"
 brew "tflint"
 brew "tfsec"
 brew "uv"
 brew "wimlib"
 brew "yarn"
-brew "zsh"
-brew "minacle/chntpw/chntpw"
 brew "mongodb/brew/mongodb-community"
 brew "oven-sh/bun/bun"
-brew "planetscale/tap/pscale"
 brew "pulumi/tap/pulumi"
 brew "sst/tap/sst"
 brew "stripe/stripe-cli/stripe"
 brew "teamookla/speedtest/speedtest"
 brew "tursodatabase/tap/turso"
 cask "1password-cli"
-cask "bruno"
 cask "google-cloud-sdk"
 cask "ngrok"
-cask "orbstack"
+mas "1Password for Safari", id: 1569813296
+mas "Ahrefs SEO Toolbar", id: 6499265972
+mas "Command X", id: 6448461551
+mas "Dato", id: 1470584107
+mas "Gifski", id: 1351639930
+mas "HEIC Converter", id: 1294126402
+mas "iMovie", id: 408981434
+mas "JSONPeep", id: 1458969831
+mas "Keynote", id: 409183694
+mas "moomoo", id: 1482713641
+mas "NextDNS", id: 1464122853
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Sink It for Reddit", id: 6449873635
+mas "Telegram", id: 747648890
+mas "TestFlight", id: 899247664
+mas "WireGuard", id: 1451685025
 vscode "aaron-bond.better-comments"
 vscode "astro-build.astro-vscode"
 vscode "bradlc.vscode-tailwindcss"
