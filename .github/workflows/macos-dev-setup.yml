@@ -1,0 +1,36 @@
+name: macOS Workflow
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    # Specify macOS as the runner
+    runs-on: macos-latest
+
+    steps:
+      # Checkout the repository
+      - uses: actions/checkout@v4
+
+      # Optional: Setup specific versions of tools
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      # Install Homebrew packages
+      - name: Install Homebrew packages
+        run: |
+          brew update
+          brew install wget
+          brew install git
+          brew install node
+          brew install python
+          brew install postgresql
+          # Add any other packages you need
+
+      # Example of running a script or commands
+      - name: Run some macOS commands
+        run: |
+          python --version
+          node --version
+          git --version
