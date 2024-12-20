@@ -1,7 +1,11 @@
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+
 # Powerlevel10k Instant Prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
 
 # Oh My Zsh Configuration
 export ZSH=$HOME/.oh-my-zsh
@@ -36,12 +40,12 @@ export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 # Environment Variables
 export HOMEBREW_NO_AUTO_UPDATE=1
 export NEXT_TELEMETRY_DISABLED=1
-export PATH="$PNPM_HOME:$PATH"
 export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 
 # NVM Configuration
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Shell Integrations and Completions
@@ -57,9 +61,6 @@ if [ -f /usr/local/etc/bash_completion ]; then
 fi
 
 autoload -U +X bashcompinit && bashcompinit
-
-# Direnv
-eval "$(direnv hook zsh)"
 
 # Custom Aliases
 alias zshconfig="vi $HOME/.zshrc"
