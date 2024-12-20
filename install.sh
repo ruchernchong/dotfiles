@@ -5,8 +5,8 @@ if ! [ -x "$(command -v git)" ]; then
   exit 1
 fi
 
-git clone https://github.com/ruchern-chong/dotfiles ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/ruchernchong/dotfiles $HOME/dotfiles
+cd $HOME/dotfiles
 chmod a+x setup.sh
 source setup.sh
 

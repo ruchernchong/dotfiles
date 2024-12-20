@@ -2,8 +2,8 @@
 
 echo -e "Updating miscellaneous configuration files..."
 
-rm -f ~/.hushlogin
-ln -s ~/dotfiles/.hushlogin ~/.hushlogin
+rm -f $HOME/.hushlogin
+ln -s $HOME/dotfiles/.hushlogin $HOME/.hushlogin
 
-rm -f ~/.gitignore
-ln -s ~/dotfiles/.gitignore ~/.gitignore
+rm -f $HOME/.gitignore
+ln -s $HOME/dotfiles/.gitignore $HOME/.gitignore
