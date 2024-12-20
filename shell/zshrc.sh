@@ -2,8 +2,8 @@
 
 echo -e "Updating your Zsh setup and configuration..."
 
-rm -f ~/.zshrc
-rm -f ~/.p10k.zsh
+rm -f $HOME/.zshrc
+rm -f $HOME/.p10k.zsh
 
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-ln -s ~/dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
+ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
+ln -s $HOME/dotfiles/zsh/.p10k.zsh $HOME/.p10k.zsh

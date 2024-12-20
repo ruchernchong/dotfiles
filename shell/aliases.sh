@@ -2,7 +2,7 @@
 
 echo -e "Updating Aliases..."
 
-rm -f ~/.aliases
-ln -s ~/dotfiles/.aliases ~/.aliases
+rm -f $HOME/.aliases
+ln -s $HOME/dotfiles/.aliases $HOME/.aliases
 
-source ~/.aliases
+source $HOME/.aliases
