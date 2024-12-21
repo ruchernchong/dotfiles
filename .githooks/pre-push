@@ -10,7 +10,4 @@ if ! git diff --quiet Brewfile; then
 
     # Commit with a standard message
     git commit -m "Update Brewfile"
-
-    # Push the changes
-    git push
 fi
