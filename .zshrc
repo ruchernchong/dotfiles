@@ -27,7 +27,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 # Plugins
 plugins=(
   colored-man-pages
-  zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
@@ -40,6 +39,7 @@ export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 # Environment Variables
 export HOMEBREW_NO_AUTO_UPDATE=1
 export NEXT_TELEMETRY_DISABLED=1
+export EDITOR=vi
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
