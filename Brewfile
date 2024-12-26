@@ -60,6 +60,7 @@ brew "qemu"
 brew "tflint"
 brew "tfsec"
 brew "uv"
+brew "vercel-cli"
 brew "wimlib"
 brew "yarn"
 brew "mongodb/brew/mongodb-community"
@@ -72,10 +73,12 @@ brew "tursodatabase/tap/turso"
 cask "1password-cli"
 cask "google-cloud-sdk"
 cask "ngrok"
+cask "orbstack"
 mas "1Password for Safari", id: 1569813296
 mas "Ahrefs SEO Toolbar", id: 6499265972
 mas "Command X", id: 6448461551
 mas "Dato", id: 1470584107
+mas "Enchanted", id: 6474268307
 mas "Gifski", id: 1351639930
 mas "HEIC Converter", id: 1294126402
 mas "iMovie", id: 408981434
@@ -89,8 +92,10 @@ mas "Sink It for Reddit", id: 6449873635
 mas "Telegram", id: 747648890
 mas "TestFlight", id: 899247664
 mas "WireGuard", id: 1451685025
+vscode "1password.op-vscode"
 vscode "aaron-bond.better-comments"
 vscode "astro-build.astro-vscode"
+vscode "biomejs.biome"
 vscode "bradlc.vscode-tailwindcss"
 vscode "christian-kohler.npm-intellisense"
 vscode "continue.continue"
@@ -101,12 +106,13 @@ vscode "esbenp.prettier-vscode"
 vscode "firefox-devtools.vscode-firefox-debug"
 vscode "formulahendry.auto-close-tag"
 vscode "foxundermoon.shell-format"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "github.remotehub"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "graphql.vscode-graphql"
 vscode "graphql.vscode-graphql-syntax"
-vscode "icrawl.discord-vscode"
 vscode "mikestead.dotenv"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-ceintl.vscode-language-pack-zh-hans"
