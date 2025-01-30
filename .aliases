@@ -28,3 +28,4 @@ alias ll="ls -la";
 
 # Directory aliases
 alias sgcarstrends="cd $HOME/projects/@sgcarstrends"
+alias tartinerlabs="cd $HOME/projects/@tartinerlabs"
