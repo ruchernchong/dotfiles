@@ -65,7 +65,7 @@ autoload -U +X bashcompinit && bashcompinit
 # Custom Aliases
 alias zshconfig="vi $HOME/.zshrc"
 alias zshreload="source $HOME/.zshrc"
-alias venv="source venv/bin/activate"
+alias venv="source .venv/bin/activate"
 
 # Custom Functions
 function gi() { 
