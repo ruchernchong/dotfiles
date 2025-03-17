@@ -43,12 +43,8 @@ export EDITOR=vi
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
-# NVM Configuration
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
-
 # Shell Integrations and Completions
+eval "$(fnm env --use-on-cd --shell zsh)"
 source $HOME/.aliases
 source $HOME/.p10k.zsh
 source $HOME/.config/op/plugins.sh
