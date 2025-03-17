@@ -1,16 +1,19 @@
+# Load Zprof for performance profiling
 zmodload zsh/zprof
 
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+# Direnv configuration
+if (( ${+commands[direnv]} )); then
+  emulate zsh -c "$(direnv export zsh)"
+  emulate zsh -c "$(direnv hook zsh)"
+fi
 
 # Powerlevel10k Instant Prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
-
 # Oh My Zsh Configuration
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 
@@ -18,7 +21,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yellow"
 plugins=(
   zsh-syntax-highlighting
 )
-
 source $ZSH/oh-my-zsh.sh
 
 # Path Configurations
@@ -47,10 +49,10 @@ alias venv="source .venv/bin/activate"
 
 # Custom Functions
 function gi() { 
-  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;
+  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ 
 }
 
 function fixUniversalClipboard() {
-	defaults delete $HOME/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled
-	defaults write $HOME/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
+  defaults delete $HOME/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled
+  defaults write $HOME/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
 }
