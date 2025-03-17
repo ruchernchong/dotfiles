@@ -1,3 +1,5 @@
+zmodload zsh/zprof
+
 (( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
 
 # Powerlevel10k Instant Prompt
