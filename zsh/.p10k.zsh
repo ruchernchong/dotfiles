@@ -52,6 +52,7 @@
     goenv                   # go environment (https://github.com/syndbg/goenv)
     nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
     nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
+    fnm                     # node.js version from fnm (https://github.com/Schniz/fnm)
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
     # node_version          # node.js version
     # go_version            # go version (https://golang.org)
@@ -1649,6 +1650,13 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
+  }
+
+  typeset -g POWERLEVEL9K_FNM_FOREGROUND=70
+
+  function prompt_fnm() {
+    local node_version=$(fnm current 2>/dev/null)
+    [[ -n "$node_version" ]] && p10k segment -b blue -f white -i "" -t "$node_version"
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
