@@ -51,13 +51,6 @@ source $HOME/.config/op/plugins.sh
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
-# Bash Completion
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
-fi
-
-autoload -U +X bashcompinit && bashcompinit
-
 # Custom Aliases
 alias zshconfig="vi $HOME/.zshrc"
 alias zshreload="source $HOME/.zshrc"
