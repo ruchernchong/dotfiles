@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "libsql/sqld"
 tap "mongodb/brew"
 tap "nextfire/tap"
@@ -29,12 +27,12 @@ brew "cdrtools"
 brew "cli53"
 brew "direnv"
 brew "doctl"
-brew "fnm"
 brew "gh"
 brew "openjpeg"
 brew "ghostscript"
 brew "git"
 brew "unbound"
+brew "icu4c@76"
 brew "netpbm"
 brew "groff"
 brew "httpie"
@@ -44,20 +42,23 @@ brew "iperf3"
 brew "jq"
 brew "lima"
 brew "lzip"
-brew "ollama", restart_service: :changed
+brew "neonctl"
+brew "nvm"
 brew "pnpm"
+brew "postgresql@17", restart_service: :changed
 brew "pulumi"
 brew "python@3.12"
 brew "python-tk@3.12"
 brew "qemu"
+brew "redis", restart_service: :changed
 brew "ripgrep"
 brew "uv"
 brew "vercel-cli"
 brew "wimlib"
 brew "yarn"
-brew "nextfire/tap/apple-music-discord-rpc"
 brew "oven-sh/bun/bun"
 brew "sst/tap/sst"
+brew "stripe/stripe-cli/stripe"
 brew "teamookla/speedtest/speedtest"
 cask "1password-cli"
 cask "google-cloud-sdk"
@@ -65,31 +66,14 @@ cask "httpie"
 cask "iina"
 cask "ngrok"
 cask "orbstack"
-cask "warp"
-mas "1Password for Safari", id: 1569813296
-mas "Command X", id: 6448461551
-mas "Dato", id: 1470584107
-mas "Disk Speed Test", id: 425264550
-mas "Gifski", id: 1351639930
-mas "HEIC Converter", id: 1294126402
-mas "iMovie", id: 408981434
-mas "JSONPeep", id: 1458969831
-mas "Keynote", id: 409183694
-mas "moomoo", id: 1482713641
-mas "NextDNS", id: 1464122853
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Sink It for Reddit", id: 6449873635
-mas "Telegram", id: 747648890
-mas "TestFlight", id: 899247664
-mas "WireGuard", id: 1451685025
+cask "redis-insight"
 vscode "aaron-bond.better-comments"
-vscode "astro-build.astro-vscode"
 vscode "biomejs.biome"
 vscode "bradlc.vscode-tailwindcss"
 vscode "christian-kohler.npm-intellisense"
 vscode "continue.continue"
 vscode "dbaeumer.vscode-eslint"
+vscode "docker.docker"
 vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
@@ -97,6 +81,9 @@ vscode "formulahendry.auto-close-tag"
 vscode "foxundermoon.shell-format"
 vscode "github.github-vscode-theme"
 vscode "github.vscode-github-actions"
+vscode "linear.linear-connect"
+vscode "linear.linear-open-issue"
+vscode "mermaidchart.vscode-mermaid-chart"
 vscode "mikestead.dotenv"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-ossdata.vscode-postgresql"
@@ -105,6 +92,7 @@ vscode "ms-vscode.vscode-typescript-next"
 vscode "msjsdiag.vscode-react-native"
 vscode "openai.chatgpt"
 vscode "orta.vscode-jest"
+vscode "pmndrs.pmndrs"
 vscode "redhat.vscode-yaml"
 vscode "steoates.autoimport"
 vscode "streetsidesoftware.code-spell-checker"
