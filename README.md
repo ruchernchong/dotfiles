@@ -1,26 +1,38 @@
 # dotfiles
 
-This repository contains dotfiles and scripts that I use to customize my macOS/Linux development workflow. Feel free to use this as a reference for your own setup.
+This repository contains dotfiles and scripts that I use to customise my macOS/Linux development workflow. Feel free to use this as a reference for your own setup.
 
 ![Terminal](terminal.png)
 
 ## Table of Contents
 
+- [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
-  - [OTA Installation](#ota-installation)
-  - [Manual Cloning](#cloning-the-repository)
+  - [One-line Installation](#one-line-installation)
+  - [Manual Installation](#manual-installation)
 - [System Requirements](#system-requirements)
+- [Architecture](#architecture)
+- [Key Components](#key-components)
+- [Development Environment](#development-environment)
+- [Common Commands](#common-commands)
 - [Configurations](#configurations)
 - [Feedback](#feedback)
-- [License](#license)
+- [Licence](#licence)
+
+## Overview
+
+This is a personal dotfiles repository for macOS/Linux development environment setup. The repository contains shell configurations, aliases, automated setup scripts, and Homebrew package management for a consistent development environment across machines.
 
 ## Features
 
-- Installs Oh-My-Zsh by default
-- Comprehensive git aliases for daily use
-- Customized oh-my-zsh settings
-- [Automated setup script](setup.sh)
+- **Automated Setup**: Complete development environment setup with a single command
+- **Shell Configuration**: Oh-My-Zsh with Starship prompt and syntax highlighting
+- **Package Management**: Homebrew Brewfile for consistent package installation
+- **Git Integration**: Comprehensive git aliases and configuration
+- **Node.js Management**: `fnm` for Node.js version management
+- **Development Tools**: VSCode, cloud tools, databases, and utilities
+- **Cross-platform**: Support for macOS and Linux
 
 ## System Requirements
 
@@ -33,70 +45,110 @@ This repository contains dotfiles and scripts that I use to customize my macOS/L
 
 - Zsh
 - Git
-- Homebrew (macOS)
 - curl
+
+## Architecture
+
+- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim)
+- **Setup Scripts** (`setup/`): Core installation scripts (Homebrew)
+- **Configuration Files**: Symlinked dotfiles (`.zshrc`, `.aliases`)
+- **Brewfile**: Homebrew package manifest for consistent package installation across machines
+
+## Key Components
+
+### Automated Setup Process
+The `setup.sh` script executes in this order:
+1. Makes all `.sh` scripts executable
+2. Runs scripts in `setup/` directory (Homebrew installation)
+3. Runs scripts in `shell/` directory (dotfile symlinking)
+4. Installs Homebrew packages via `brew bundle install`
+
+### Shell Configuration System
+- **Zsh**: Oh-My-Zsh with syntax highlighting plugin
+- **Theme**: Starship prompt
+- **Node**: Uses `fnm` for Node.js version management
+- **Environment**: Configured for development with PostgreSQL, Python, Android SDK
+
+## Development Environment
+
+### Key Tools Included
+- **Development**: git, gh, nvm, pnpm, yarn, bun
+- **Cloud**: vercel-cli, aws-sam-cli, pulumi, doctl
+- **Databases**: postgresql@17, redis
+- **Utilities**: jq, ripgrep, httpie, direnv
+- **VSCode**: With comprehensive extension set
+
+### Environment Variables
+- `HOMEBREW_NO_AUTO_UPDATE=1`: Prevents automatic Homebrew updates
+- `NEXT_TELEMETRY_DISABLED=1`: Disables Next.js telemetry
+- `PNPM_HOME`: pnpm global package directory
+- PostgreSQL and Android SDK paths configured
+
+## Common Commands
+
+### Package Management
+```bash
+# Install all Homebrew packages
+brew bundle install
+
+# Update Brewfile
+brew bundle dump --force
+```
+
+### Shell Configuration
+```bash
+# Reload zsh configuration
+zshreload  # alias for 'source $HOME/.zshrc'
+
+# Edit zsh configuration
+zshconfig  # alias for 'vi $HOME/.zshrc'
+```
 
 ## Configurations
 
-### Zsh Customizations
+### Zsh Customisations
 
-- Custom Oh-My-Zsh theme configuration
-- Key plugins:
+- **Oh-My-Zsh**: Custom configuration with Starship theme
+- **Key plugins**:
   - zsh-autosuggestions
   - zsh-syntax-highlighting
   - git
   - docker
 
-### Git Aliases
+### Git Aliases (Extensive Collection)
 
 - `g` → `git`
+- `gs` → `git status`
+- `gcm` → `git checkout main`
+- `glog` → formatted git log with graph
 - `gp` → `git pull`
 - `gps` → `git push`
-- Custom commit and branch management shortcuts
+- Full list available in `.aliases` file
 
 ## Installation
 
 **Warning:** Do not blindly use these settings as they may override or modify your existing configuration. It is highly recommended to clone/fork this repository to another folder. Use at your own risk!
 
-### OTA Installation
+### One-line Installation
 
-```zsh
+```bash
 curl -L https://raw.githubusercontent.com/ruchernchong/dotfiles/master/install.sh | bash
 ```
 
-### Cloning the Repository
+### Manual Installation
 
-```zsh
+```bash
+# Clone and setup
 git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 chmod a+x setup.sh
 source setup.sh
-
-# Set up Git Hooks
-git config core.hooksPath .githooks
-chmod +x .githooks/post-push
-```
-
-### Git Hooks Setup
-
-This repository includes a post-push hook for automatically updating and committing the Brewfile:
-
-- Located in `.githooks/post-push`
-- Automatically runs `brew bundle dump`
-- Stages and commits Brewfile changes
-- Requires manual activation after cloning
-
-To enable the hook:
-
-```zsh
-git config core.hooksPath .githooks
-chmod +x .githooks/post-push
 ```
 
 ## Feedback
 
 I welcome any feedback or suggestions by creating an [issue](https://github.com/ruchernchong/dotfiles/issues) or a [pull request](https://github.com/ruchernchong/dotfiles/pulls).
 
-## License
+## Licence
 
-This code is available under the [MIT License](LICENSE)
+This code is available under the [MIT Licence](LICENSE)
