@@ -56,6 +56,7 @@ brew "redis", restart_service: :changed
 brew "ripgrep"
 brew "rustup"
 brew "starship"
+brew "tree"
 brew "unbound"
 brew "uv"
 brew "vercel-cli"
