@@ -17,7 +17,6 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 - **Setup Scripts** (`setup/`): Core installation scripts (Homebrew)
 - **Configuration Files**: Symlinked dotfiles (`.zshrc`, `.aliases`, `.p10k.zsh`)
 - **Brewfile**: Homebrew package manifest for consistent package installation across machines
-- **Git Hooks** (`.githooks/`): Automated Brewfile management
 
 ## Common Commands
 
@@ -38,15 +37,8 @@ curl -L https://raw.githubusercontent.com/ruchernchong/dotfiles/master/install.s
 # Install all Homebrew packages
 brew bundle install
 
-# Update Brewfile (automatically done via git hook)
+# Update Brewfile
 brew bundle dump --force
-```
-
-### Git Hooks Setup
-```bash
-# Enable automatic Brewfile updates
-git config core.hooksPath .githooks
-chmod +x .githooks/post-commit
 ```
 
 ### Shell Configuration
@@ -80,12 +72,6 @@ Extensive git aliases defined in `.aliases`:
 - `gcm` → `git checkout main`
 - `glog` → formatted git log with graph
 - Full list available in `.aliases` file
-
-### Automatic Brewfile Management
-The post-commit git hook automatically:
-1. Runs `brew bundle dump --force` after commits
-2. Stages and commits Brewfile changes if detected
-3. Keeps package manifest synchronised with installed packages
 
 ## Development Environment
 
