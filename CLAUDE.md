@@ -13,9 +13,9 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 
 ## Architecture
 
-- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim, powerlevel10k)
+- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim)
 - **Setup Scripts** (`setup/`): Core installation scripts (Homebrew)
-- **Configuration Files**: Symlinked dotfiles (`.zshrc`, `.aliases`, `.p10k.zsh`)
+- **Configuration Files**: Symlinked dotfiles (`.zshrc`, `.aliases`)
 - **Brewfile**: Homebrew package manifest for consistent package installation across machines
 
 ## Common Commands
@@ -61,7 +61,7 @@ The `setup.sh` script executes in this order:
 
 ### Shell Configuration System
 - **Zsh**: Oh-My-Zsh with syntax highlighting plugin
-- **Theme**: Starship prompt with Powerlevel10k fallback
+- **Theme**: Starship prompt
 - **Node**: Uses `fnm` for Node.js version management
 - **Environment**: Configured for development with PostgreSQL, Python, Android SDK
 
