@@ -2,6 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Language and Style Guidelines
+
+- **Language**: Use English (UK) spelling and conventions throughout this entire project
+- **Documentation**: All comments, documentation, and text should follow British English standards
+
 ## Repository Overview
 
 This is a personal dotfiles repository for macOS/Linux development environment setup. The repository contains shell configurations, aliases, automated setup scripts, and Homebrew package management.
@@ -80,7 +85,7 @@ Extensive git aliases defined in `.aliases`:
 The post-commit git hook automatically:
 1. Runs `brew bundle dump --force` after commits
 2. Stages and commits Brewfile changes if detected
-3. Keeps package manifest synchronized with installed packages
+3. Keeps package manifest synchronised with installed packages
 
 ## Development Environment
 
