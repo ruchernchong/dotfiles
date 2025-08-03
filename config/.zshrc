@@ -49,6 +49,7 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 export PATH="$PNPM_HOME:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # -----------------------------------------------------------------------------
 # Shell Integrations and Completions
