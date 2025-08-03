@@ -35,18 +35,18 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # -----------------------------------------------------------------------------
-# Path Configurations
-# -----------------------------------------------------------------------------
-export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
-export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
-
-# -----------------------------------------------------------------------------
 # Environment Variables
 # -----------------------------------------------------------------------------
 export HOMEBREW_NO_AUTO_UPDATE=1
 export NEXT_TELEMETRY_DISABLED=1
 export EDITOR=vi
 export PNPM_HOME="$HOME/Library/pnpm"
+
+# -----------------------------------------------------------------------------
+# PATH Configuration
+# -----------------------------------------------------------------------------
+export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
+export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 export PATH="$PNPM_HOME:$PATH"
 
 # -----------------------------------------------------------------------------
