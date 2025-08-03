@@ -16,6 +16,11 @@ if (( ${+commands[direnv]} )); then
   emulate zsh -c "$(direnv hook zsh)"
 fi
 
+# fnm (Fast Node Manager)
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Starship prompt
+eval "$(starship init zsh)"
 
 # -----------------------------------------------------------------------------
 # Oh My Zsh Configuration
