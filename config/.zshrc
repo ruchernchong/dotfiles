@@ -42,6 +42,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export NEXT_TELEMETRY_DISABLED=1
 export EDITOR=vi
 export PNPM_HOME="$HOME/Library/pnpm"
+export ENABLE_BACKGROUND_TASKS=1
+export FORCE_AUTO_BACKGROUND_TASKS=1
 
 # -----------------------------------------------------------------------------
 # PATH Configuration
