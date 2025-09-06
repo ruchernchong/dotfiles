@@ -21,6 +21,7 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 ## Common Commands
 
 ### Initial Setup
+
 ```bash
 # Clone and setup (manual)
 git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
@@ -33,6 +34,7 @@ curl -L https://raw.githubusercontent.com/ruchernchong/dotfiles/master/install.s
 ```
 
 ### Package Management
+
 ```bash
 # Install all Homebrew packages
 brew bundle install
@@ -42,6 +44,7 @@ brew bundle dump --force
 ```
 
 ### Shell Configuration
+
 ```bash
 # Reload zsh configuration
 zshreload  # alias for 'source $HOME/.zshrc'
@@ -50,36 +53,68 @@ zshreload  # alias for 'source $HOME/.zshrc'
 zshconfig  # alias for 'vi $HOME/.zshrc'
 ```
 
+### Scheduled Tasks (Crontab)
+
+```bash
+# View current cron jobs
+crontab -l
+
+# Apply dotfiles crontab configuration
+crontab $HOME/dotfiles/config/crontab
+
+# View maintenance logs
+tail -f /tmp/brew-weekly.log     # Weekly Homebrew updates
+tail -f /tmp/brew-cleanup.log    # Monthly cleanup
+tail -f /tmp/brew-health.log     # Quarterly health checks
+tail -f /tmp/pnpm-cleanup.log    # pnpm store cleanup
+```
+
 ## Key Components
 
 ### Automated Setup Process
+
 The `setup.sh` script executes in this order:
+
 1. Makes all `.sh` scripts executable
 2. Runs scripts in `setup/` directory (Homebrew installation)
-3. Runs scripts in `shell/` directory (dotfile symlinking)
+3. Runs scripts in `shell/` directory (dotfile symlinking, crontab configuration)
 4. Installs Homebrew packages via `brew bundle install`
 
 ### Shell Configuration System
+
 - **Zsh**: Oh-My-Zsh with syntax highlighting plugin
 - **Theme**: Starship prompt
 - **Node**: Uses `fnm` for Node.js version management
 - **Environment**: Configured for development with PostgreSQL, Python, Android SDK
 
 ### Git Aliases
+
 Extensive git aliases defined in `.aliases`:
+
 - `g` → `git`
 - `gs` → `git status`
 - `gcm` → `git checkout main`
 - `glog` → formatted git log with graph
 - Full list available in `.aliases` file
 
+### Scheduled Maintenance
+
+Automated maintenance tasks via crontab:
+
+- **Weekly**: Homebrew update check (Sundays 2 AM)
+- **Monthly**: Homebrew cleanup and pnpm store pruning
+- **Quarterly**: Homebrew health diagnostics
+- **Logs**: All maintenance logged to `/tmp/` for review
+
 ## Development Environment
 
 ### Supported Platforms
+
 - macOS (10.15+)
 - Linux (Ubuntu 20.04+, Fedora 33+)
 
 ### Key Tools Included
+
 - Development: git, gh, nvm, pnpm, yarn, bun
 - Cloud: vercel-cli, aws-sam-cli, pulumi, doctl
 - Databases: postgresql@17, redis
@@ -87,6 +122,7 @@ Extensive git aliases defined in `.aliases`:
 - VSCode with comprehensive extension set
 
 ### Environment Variables
+
 - `HOMEBREW_NO_AUTO_UPDATE=1`: Prevents automatic Homebrew updates
 - `NEXT_TELEMETRY_DISABLED=1`: Disables Next.js telemetry
 - `PNPM_HOME`: pnpm global package directory
