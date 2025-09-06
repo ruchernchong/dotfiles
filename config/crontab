@@ -1,0 +1,20 @@
+# Crontab configuration for dotfiles
+# Applied automatically during system setup via shell/crontab.sh
+#
+# Format: minute hour day month dayofweek command
+# Logs are written to /tmp/ for review
+
+# Package Management Maintenance
+# ==============================
+
+# pnpm store cleanup - Every Monday at 3:00 AM
+0 3 * * 1 /bin/zsh -c '$(which pnpm) store prune' >> /tmp/pnpm-cleanup.log 2>&1
+
+# Homebrew update check - Every Sunday at 2:00 AM  
+0 2 * * 0 /bin/zsh -c 'export PATH="/opt/homebrew/bin:$PATH" && brew update && brew outdated' >> /tmp/brew-weekly.log 2>&1
+
+# Homebrew cleanup - 1st of every month at 3:30 AM
+30 3 1 * * /bin/zsh -c 'export PATH="/opt/homebrew/bin:$PATH" && brew cleanup --prune=30 && brew autoremove' >> /tmp/brew-cleanup.log 2>&1
+
+# Homebrew health check - 1st of Jan/Apr/Jul/Oct at 4:00 AM  
+0 4 1 1,4,7,10 * /bin/zsh -c 'export PATH="/opt/homebrew/bin:$PATH" && brew doctor && brew missing' >> /tmp/brew-health.log 2>&1
