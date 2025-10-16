@@ -87,6 +87,15 @@ The `setup.sh` script executes in this order:
 - **Node**: Uses `fnm` for Node.js version management
 - **Environment**: Configured for development with PostgreSQL, Python, Android SDK
 
+### Claude Code Settings
+
+User-level Claude Code settings are backed up and version-controlled:
+
+- **Location**: `config/.claude/settings.json`
+- **Symlinked to**: `~/.claude/settings.json`
+- **Setup**: Automatically configured via `shell/claude.sh` during `setup.sh` execution
+- **Manual restore**: Run `source $HOME/dotfiles/shell/claude.sh` to restore the symlink
+
 ### Git Aliases
 
 Extensive git aliases defined in `.aliases`:

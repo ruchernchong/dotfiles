@@ -1,0 +1,26 @@
+{
+  "env": {},
+  "includeCoAuthoredBy": false,
+  "statusLine": {
+    "type": "command",
+    "command": "bun x ccusage statusline"
+  },
+  "enabledPlugins": {
+    "commit-commands@claude-code-plugins": true,
+    "feature-dev@claude-code-plugins": true,
+    "security-guidance@claude-code-plugins": true,
+    "pr-review-toolkit@claude-code-plugins": true
+  },
+  "alwaysThinkingEnabled": false,
+  "permissions": {
+    "allow": [],
+    "ask": [
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -fdx:*)",
+      "Bash(git gc --prune=now:*)",
+      "Bash(git filter-branch:*)"
+    ],
+    "deny": []
+  }
+}

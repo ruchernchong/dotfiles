@@ -191,5 +191,7 @@ typings/
 
 # Claude
 .claude
+# But track config/.claude (user settings backup)
+!config/.claude/
 
 # End of https://www.gitignore.io/api/macos,node,jetbrains+all
