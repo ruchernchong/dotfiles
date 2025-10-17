@@ -1,6 +1,17 @@
 {
   "env": {},
   "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [],
+    "deny": [],
+    "ask": [
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -fdx:*)",
+      "Bash(git gc --prune=now:*)",
+      "Bash(git filter-branch:*)"
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bun x ccusage statusline"
@@ -11,16 +22,5 @@
     "security-guidance@claude-code-plugins": true,
     "pr-review-toolkit@claude-code-plugins": true
   },
-  "alwaysThinkingEnabled": false,
-  "permissions": {
-    "allow": [],
-    "ask": [
-      "Bash(git push --force:*)",
-      "Bash(git reset --hard:*)",
-      "Bash(git clean -fdx:*)",
-      "Bash(git gc --prune=now:*)",
-      "Bash(git filter-branch:*)"
-    ],
-    "deny": []
-  }
+  "alwaysThinkingEnabled": true
 }
