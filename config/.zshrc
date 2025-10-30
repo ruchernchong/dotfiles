@@ -38,7 +38,6 @@ source $ZSH/oh-my-zsh.sh
 # -----------------------------------------------------------------------------
 # Environment Variables
 # -----------------------------------------------------------------------------
-export HOMEBREW_NO_AUTO_UPDATE=1
 export NEXT_TELEMETRY_DISABLED=1
 export EDITOR=vi
 export PNPM_HOME="$HOME/Library/pnpm"

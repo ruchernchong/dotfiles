@@ -132,7 +132,6 @@ Automated maintenance tasks via crontab:
 
 ### Environment Variables
 
-- `HOMEBREW_NO_AUTO_UPDATE=1`: Prevents automatic Homebrew updates
 - `NEXT_TELEMETRY_DISABLED=1`: Disables Next.js telemetry
 - `PNPM_HOME`: pnpm global package directory
 - PostgreSQL and Android SDK paths configured
