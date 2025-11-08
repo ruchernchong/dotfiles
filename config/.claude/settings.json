@@ -65,11 +65,11 @@
     "command": "bun x ccusage statusline --visual-burn-rate emoji"
   },
   "enabledPlugins": {
-    "commit-commands@claude-code-plugins": true,
-    "feature-dev@claude-code-plugins": true,
-    "security-guidance@claude-code-plugins": true,
-    "pr-review-toolkit@claude-code-plugins": true,
-    "example-skills@anthropic-agent-skills": true
+    "commit-commands@claude-code-plugins": false,
+    "feature-dev@claude-code-plugins": false,
+    "security-guidance@claude-code-plugins": false,
+    "pr-review-toolkit@claude-code-plugins": false,
+    "example-skills@anthropic-agent-skills": false
   },
   "alwaysThinkingEnabled": true
 }

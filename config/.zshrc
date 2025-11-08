@@ -8,6 +8,23 @@
 zmodload zsh/zprof
 
 # -----------------------------------------------------------------------------
+# Environment Variables
+# -----------------------------------------------------------------------------
+export NEXT_TELEMETRY_DISABLED=1
+export EDITOR=vi
+export PNPM_HOME="$HOME/Library/pnpm"
+export ENABLE_BACKGROUND_TASKS=1
+export FORCE_AUTO_BACKGROUND_TASKS=1
+
+# -----------------------------------------------------------------------------
+# PATH Configuration
+# -----------------------------------------------------------------------------
+export PATH="$(brew --prefix)/opt/postgresql@18/bin:$PATH"
+export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
+export PATH="$PNPM_HOME:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# -----------------------------------------------------------------------------
 # External Tool Initialization
 # -----------------------------------------------------------------------------
 # Direnv
@@ -36,30 +53,13 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # -----------------------------------------------------------------------------
-# Environment Variables
-# -----------------------------------------------------------------------------
-export NEXT_TELEMETRY_DISABLED=1
-export EDITOR=vi
-export PNPM_HOME="$HOME/Library/pnpm"
-export ENABLE_BACKGROUND_TASKS=1
-export FORCE_AUTO_BACKGROUND_TASKS=1
-
-# -----------------------------------------------------------------------------
-# PATH Configuration
-# -----------------------------------------------------------------------------
-export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
-export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
-export PATH="$PNPM_HOME:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-
-# -----------------------------------------------------------------------------
 # Shell Integrations and Completions
 # -----------------------------------------------------------------------------
 source $HOME/.aliases
 source $HOME/.config/op/plugins.sh
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
+source $HOME/.turso/env
 
 # -----------------------------------------------------------------------------
 # Custom Aliases
@@ -71,8 +71,8 @@ alias venv="source .venv/bin/activate"
 # -----------------------------------------------------------------------------
 # Custom Functions
 # -----------------------------------------------------------------------------
-function gi() { 
-  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ 
+function gi() {
+  curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@
 }
 
 function fixUniversalClipboard() {
