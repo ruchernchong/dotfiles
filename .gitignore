@@ -190,7 +190,9 @@ typings/
 .fusebox/
 
 # Claude
-.claude
+**/.claude/*
+!**/.claude/skills/
+!**/.claude/commands/
 # But track config/.claude (user settings backup)
 !config/.claude/
 
