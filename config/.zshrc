@@ -79,3 +79,6 @@ function fixUniversalClipboard() {
   defaults delete $HOME/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled
   defaults write $HOME/Library/Preferences/com.apple.coreservices.useractivityd.plist ClipboardSharingEnabled 1
 }
+
+# Added by Antigravity
+export PATH="/Users/ruchernchong/.antigravity/antigravity/bin:$PATH"
