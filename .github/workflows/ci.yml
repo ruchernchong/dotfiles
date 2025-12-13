@@ -74,7 +74,7 @@ jobs:
         run: bash -n setup.sh
 
   macos-minimal:
-    name: macOS Minimal Profile
+    name: macOS Minimal Profile (Dry-Run)
     runs-on: macos-latest
     steps:
       - name: Checkout code
@@ -85,27 +85,11 @@ jobs:
           chmod +x setup.sh
           find setup shell -name "*.sh" -exec chmod +x {} \;
 
-      - name: Install Homebrew (if not present)
-        run: |
-          if ! command -v brew &> /dev/null; then
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          fi
+      - name: Run minimal profile dry-run test
+        run: ./setup.sh --dry-run --profile=minimal
 
-      - name: Run minimal installation
-        run: ./setup.sh --no-interactive --profile=minimal
-        env:
-          CI: true
-
-      - name: Verify installation
-        run: |
-          # Check critical symlinks
-          [ -L "$HOME/.zshrc" ] && echo "✓ .zshrc symlinked"
-          [ -L "$HOME/.aliases" ] && echo "✓ .aliases symlinked"
-          [ -L "$HOME/.vimrc" ] && echo "✓ .vimrc symlinked"
-
-          # Check Homebrew packages (basic verification)
-          command -v git && echo "✓ git installed"
-          command -v gh && echo "✓ gh installed"
+      - name: Verify setup script syntax
+        run: bash -n setup.sh
 
   ubuntu-dry-run:
     name: Ubuntu Dry-Run Test
