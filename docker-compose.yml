@@ -1,0 +1,27 @@
+services:
+  # Dry-run mode (default, safe preview)
+  dry-run:
+    build: .
+    command: ["./setup.sh", "--dry-run"]
+
+  # Non-interactive with minimal profile
+  minimal:
+    build: .
+    command: ["./setup.sh", "--no-interactive", "--profile=minimal"]
+
+  # Non-interactive with developer profile
+  developer:
+    build: .
+    command: ["./setup.sh", "--no-interactive", "--profile=developer"]
+
+  # Non-interactive with full profile
+  full:
+    build: .
+    command: ["./setup.sh", "--no-interactive", "--profile=full"]
+
+  # Interactive shell for manual testing
+  shell:
+    build: .
+    command: ["/bin/bash"]
+    stdin_open: true
+    tty: true

@@ -1,0 +1,178 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  shellcheck:
+    name: ShellCheck Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@00b27aa7cb85167568cb48a3838b75f4265f2bca # 2.0.0
+        with:
+          scandir: '.'
+          severity: warning
+          # Exclude zsh files - ShellCheck only supports sh/bash/dash/ksh
+          # Scripts use #!/bin/zsh shebang and zsh-specific features
+          ignore_paths: |
+            .git
+            .github
+            config
+            lib
+            setup
+            shell
+          ignore_names: |
+            install.sh
+            setup.sh
+            .zshrc
+
+  docker-tests:
+    name: Docker Tests (Linux)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        profile: [dry-run, minimal, developer, full]
+      fail-fast: false
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@c47758b77c9736f4b2ef4073d4d51994fabfe349 # v3.7.1
+
+      - name: Build Docker image
+        run: docker compose build
+
+      - name: Run ${{ matrix.profile }} test
+        run: docker compose run --rm ${{ matrix.profile }}
+
+      - name: Clean up
+        if: always()
+        run: docker compose down --volumes
+
+  macos-dry-run:
+    name: macOS Dry-Run Test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make setup script executable
+        run: chmod +x setup.sh
+
+      - name: Run dry-run test
+        run: ./setup.sh --dry-run
+
+      - name: Verify setup script syntax
+        run: bash -n setup.sh
+
+  macos-minimal:
+    name: macOS Minimal Profile (Dry-Run)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: |
+          chmod +x setup.sh
+          find setup shell -name "*.sh" -exec chmod +x {} \;
+
+      - name: Run minimal profile dry-run test
+        run: ./setup.sh --dry-run --profile=minimal
+
+      - name: Verify setup script syntax
+        run: bash -n setup.sh
+
+  ubuntu-dry-run:
+    name: Ubuntu Dry-Run Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install zsh
+        run: sudo apt-get update && sudo apt-get install -y zsh
+
+      - name: Make setup script executable
+        run: chmod +x setup.sh
+
+      - name: Run dry-run test
+        run: ./setup.sh --dry-run
+
+      - name: Verify setup script syntax
+        run: zsh -n setup.sh
+
+  validate-configs:
+    name: Validate Configuration Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate shell configs
+        run: |
+          # Validate .aliases can be sourced
+          bash -n config/.aliases
+
+      - name: Validate JSON configs
+        run: |
+          # Validate Claude Code settings
+          if [ -f "config/.claude/settings.json" ]; then
+            python3 -m json.tool config/.claude/settings.json > /dev/null
+            echo "✓ Claude Code settings.json is valid"
+          fi
+
+      - name: Validate Brewfile syntax
+        run: |
+          # Check Brewfile exists and has valid entries
+          if [ -f "Brewfile" ]; then
+            grep -E '^(tap|brew|cask|mas)' Brewfile && echo "✓ Brewfile has valid entries"
+          fi
+
+          # Check profile Brewfiles
+          for profile in minimal developer; do
+            brewfile="config/setup-profiles/${profile}.brewfile"
+            if [ -f "$brewfile" ]; then
+              grep -E '^(tap|brew|cask|mas)' "$brewfile" && echo "✓ ${profile}.brewfile has valid entries"
+            fi
+          done
+
+  test-library-functions:
+    name: Test Library Functions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test platform library
+        run: |
+          source lib/platform.sh
+          echo "✓ platform.sh loaded"
+          declare -F is_macos >/dev/null && echo "✓ is_macos function defined"
+          declare -F is_linux >/dev/null && echo "✓ is_linux function defined"
+          declare -F detect_os >/dev/null && echo "✓ detect_os function defined"
+
+      - name: Test interactive library
+        run: |
+          source lib/interactive.sh
+          echo "✓ interactive.sh loaded"
+
+      - name: Test backup library
+        run: |
+          source lib/backup.sh
+          echo "✓ backup.sh loaded"
+
+      - name: Test brewfile profiles library
+        run: |
+          source lib/brewfile-profiles.sh
+          echo "✓ brewfile-profiles.sh loaded"

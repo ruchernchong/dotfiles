@@ -13,23 +13,51 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 
 ## Architecture
 
-- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim)
-- **Setup Scripts** (`setup/`): Core installation scripts (Homebrew)
-- **Configuration Files**: Symlinked dotfiles (`.zshrc`, `.aliases`)
-- **Brewfile**: Homebrew package manifest for consistent package installation across machines
+- **Library Functions** (`lib/`): Shared utility libraries
+  - `platform.sh`: Platform detection (macOS/Linux) and OS-specific logic
+  - `interactive.sh`: Interactive prompts, colours, and formatting utilities
+  - `backup.sh`: File backup and symlink management
+  - `brewfile-profiles.sh`: Installation profile management for minimal/developer/full setups
+- **Shell Scripts** (`shell/`): Modular setup scripts for different components
+  - `aliases.sh`: Symlinks shell aliases configuration
+  - `zshrc.sh`: Symlinks Zsh configuration
+  - `vim.sh`: Symlinks Vim configuration
+  - `claude.sh`: Symlinks Claude Code settings and global CLAUDE.md
+  - `crontab.sh`: Configures scheduled maintenance tasks
+  - `terminal.sh`: macOS Terminal.app configuration (macOS only)
+  - `misc.sh`: Additional miscellaneous configurations
+- **Setup Scripts** (`setup/`): Core installation scripts
+  - `install-homebrew.sh`: Homebrew installation for macOS/Linux
+- **Configuration Files** (`config/`): Symlinked dotfiles and settings
+  - `.zshrc`, `.aliases`, `.vimrc`: Shell and editor configurations
+  - `crontab`: Scheduled maintenance job definitions
+  - `.claude/settings.json`: Claude Code user settings
+  - `.claude/CLAUDE.md`: Global Claude Code instructions
+  - `setup-profiles/`: Installation profile Brewfiles (minimal.brewfile, developer.brewfile)
+- **Brewfile**: Homebrew package manifest for consistent package installation across machines (full installation)
 
 ## Common Commands
 
 ### Initial Setup
 
 ```bash
-# Clone and setup (manual)
+# Clone and setup (interactive - recommended)
 git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
-chmod a+x setup.sh
-source setup.sh
 
-# One-line installation
+# Preview installation (dry-run mode)
+./setup.sh --dry-run   # or -n
+
+# Run interactive setup
+./setup.sh
+
+# Skip interactive prompts (uses defaults)
+./setup.sh --no-interactive
+
+# Use specific profile without prompts
+./setup.sh --no-interactive --profile=minimal
+
+# OR: One-line installation
 curl -L https://raw.githubusercontent.com/ruchernchong/dotfiles/master/install.sh | bash
 ```
 
@@ -71,14 +99,32 @@ tail -f /tmp/pnpm-cleanup.log    # pnpm store cleanup
 
 ## Key Components
 
-### Automated Setup Process
+### Setup Process
 
-The `setup.sh` script executes in this order:
+The `setup.sh` script provides both interactive and automated setup:
 
-1. Makes all `.sh` scripts executable
-2. Runs scripts in `setup/` directory (Homebrew installation)
-3. Runs scripts in `shell/` directory (dotfile symlinking, crontab configuration)
-4. Installs Homebrew packages via `brew bundle install`
+**Interactive mode** (default):
+- **Dry-run mode**: Use `--dry-run` or `-n` flag to preview configuration without making changes
+- **Profile selection**: Choose between minimal, developer, or full installation
+  - **minimal**: Essential tools only (~15 packages) - Git, GitHub CLI, shell tools, Node.js (fnm, pnpm), utilities
+  - **developer**: Development environment (~40-50 packages) - Everything in minimal + databases, containers, cloud tools, essential VSCode extensions
+  - **full**: Complete installation (~120 packages) - Everything in developer + multiple Python versions, additional cloud SDKs, all VSCode extensions, media tools
+- **Backup handling**: Options to backup, skip, or overwrite existing dotfiles
+- **Crontab management**: Configure scheduled maintenance tasks
+- **Tool selection**: Choose Node.js version manager (fnm/nvm/both)
+- **Python version**: Select primary Python version (3.13/3.12/3.11/all) - only for full profile
+- **Database options**: Select whether to install PostgreSQL and Redis - only for developer and full profiles
+
+**Non-interactive mode** (`--no-interactive`):
+- Uses default settings (full profile)
+- Can specify profile via `--profile=minimal|developer|full`
+
+**Installation sequence**:
+1. Collects user preferences (interactive mode only)
+2. Makes all `.sh` scripts executable
+3. Runs scripts in `setup/` directory (Homebrew installation)
+4. Runs scripts in `shell/` directory (dotfile symlinking, crontab configuration)
+5. Installs Homebrew packages via `brew bundle install`
 
 ### Shell Configuration System
 
@@ -89,12 +135,12 @@ The `setup.sh` script executes in this order:
 
 ### Claude Code Settings
 
-User-level Claude Code settings are backed up and version-controlled:
+User-level Claude Code settings and global instructions are backed up and version-controlled:
 
-- **Location**: `config/.claude/settings.json`
-- **Symlinked to**: `~/.claude/settings.json`
+- **Settings Location**: `config/.claude/settings.json` → symlinked to `~/.claude/settings.json`
+- **Global Instructions**: `config/.claude/CLAUDE.md` → symlinked to `~/.claude/CLAUDE.md`
 - **Setup**: Automatically configured via `shell/claude.sh` during `setup.sh` execution
-- **Manual restore**: Run `source $HOME/dotfiles/shell/claude.sh` to restore the symlink
+- **Manual restore**: Run `source $HOME/dotfiles/shell/claude.sh` to restore the symlinks
 
 ### Git Aliases
 

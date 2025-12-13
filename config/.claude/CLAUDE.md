@@ -1,0 +1,1 @@
+- Automatically use context7 for code generation and library documentation.

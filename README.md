@@ -49,19 +49,36 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 
 ## Architecture
 
-- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim)
-- **Setup Scripts** (`setup/`): Core installation scripts (Homebrew)
-- **Configuration Files**: Symlinked dotfiles (`.zshrc`, `.aliases`)
-- **Brewfile**: Homebrew package manifest for consistent package installation across machines
+- **Library Functions** (`lib/`): Shared utility libraries for platform detection, interactive prompts, backup management, and profile selection
+- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim, Claude Code, crontab)
+- **Setup Scripts** (`setup/`): Core installation scripts (Homebrew installation)
+- **Configuration Files** (`config/`): Symlinked dotfiles (`.zshrc`, `.aliases`, `.vimrc`) and settings (`.claude/settings.json`, `crontab`)
+- **Brewfile**: Homebrew package manifest with profile support (minimal, developer, full)
 
 ## Key Components
 
 ### Automated Setup Process
-The `setup.sh` script executes in this order:
-1. Makes all `.sh` scripts executable
-2. Runs scripts in `setup/` directory (Homebrew installation)
-3. Runs scripts in `shell/` directory (dotfile symlinking)
-4. Installs Homebrew packages via `brew bundle install`
+The `setup.sh` script provides both interactive and automated setup:
+
+**Interactive mode** (default):
+- Dry-run mode with `--dry-run` flag to preview changes
+- Profile selection: minimal (~15 packages), developer (~40-50 packages), or full (~120 packages)
+- Backup handling for existing dotfiles
+- Crontab configuration for scheduled maintenance
+- Node.js version manager selection (fnm/nvm/both)
+- Python version selection (full profile only)
+- Database installation options (developer/full profiles)
+
+**Non-interactive mode** (`--no-interactive`):
+- Uses default settings (full profile)
+- Specify profile via `--profile=minimal|developer|full`
+
+**Installation sequence**:
+1. Collects user preferences (interactive mode only)
+2. Makes all `.sh` scripts executable
+3. Runs scripts in `setup/` directory (Homebrew installation)
+4. Runs scripts in `shell/` directory (dotfile symlinking, crontab configuration)
+5. Installs Homebrew packages via `brew bundle install` (using selected profile)
 
 ### Shell Configuration System
 - **Zsh**: Oh-My-Zsh with syntax highlighting plugin
@@ -103,6 +120,21 @@ zshreload  # alias for 'source $HOME/.zshrc'
 zshconfig  # alias for 'vi $HOME/.zshrc'
 ```
 
+### Scheduled Tasks (Crontab)
+```bash
+# View current cron jobs
+crontab -l
+
+# Apply dotfiles crontab configuration
+crontab $HOME/dotfiles/config/crontab
+
+# View maintenance logs
+tail -f /tmp/brew-weekly.log     # Weekly Homebrew updates (Sunday 2 AM)
+tail -f /tmp/brew-cleanup.log    # Monthly cleanup (1st of month, 3:30 AM)
+tail -f /tmp/brew-health.log     # Quarterly health checks (Jan/Apr/Jul/Oct)
+tail -f /tmp/pnpm-cleanup.log    # Weekly pnpm store pruning (Monday 3 AM)
+```
+
 ## Configurations
 
 ### Zsh Customisations
@@ -113,6 +145,15 @@ zshconfig  # alias for 'vi $HOME/.zshrc'
   - zsh-syntax-highlighting
   - git
   - docker
+
+### Claude Code Settings
+
+User-level Claude Code settings are backed up and version-controlled:
+
+- **Location**: `config/.claude/settings.json`
+- **Symlinked to**: `~/.claude/settings.json`
+- **Setup**: Automatically configured during `setup.sh` execution
+- **Manual restore**: Run `source $HOME/dotfiles/shell/claude.sh` to restore the symlink
 
 ### Git Aliases (Extensive Collection)
 
@@ -127,6 +168,34 @@ zshconfig  # alias for 'vi $HOME/.zshrc'
 ## Installation
 
 **Warning:** Do not blindly use these settings as they may override or modify your existing configuration. It is highly recommended to clone/fork this repository to another folder. Use at your own risk!
+
+### Interactive Installation (Recommended)
+
+The interactive setup guides you through customising your installation:
+
+```bash
+# Clone the repository
+git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles
+
+# Preview what would be installed (dry-run mode)
+./setup.sh --dry-run
+
+# Run the interactive setup
+./setup.sh
+```
+
+The interactive setup allows you to:
+- Choose installation profile (minimal/developer/full)
+  - **minimal**: Essential tools only (~15 packages)
+  - **developer**: Development environment (~40-50 packages)
+  - **full**: Complete installation (~120 packages)
+- Select Node.js version manager (fnm/nvm/both)
+- Choose Python version (3.13/3.12/3.11/all) - full profile only
+- Configure backup options for existing files
+- Customise database installations (PostgreSQL, Redis) - developer/full profiles
+- Configure scheduled maintenance tasks (crontab)
+- Preview changes before applying
 
 ### One-line Installation
 
