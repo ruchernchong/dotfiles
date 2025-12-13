@@ -195,6 +195,8 @@ typings/
 !**/.claude/commands/
 # But track config/.claude (user settings backup)
 !config/.claude/
+!config/.claude/settings.json
+!config/.claude/CLAUDE.md
 
 # Setup state file (temporary)
 .setup-state
