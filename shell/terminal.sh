@@ -5,6 +5,16 @@
 
 set -e
 
+# Source platform detection
+SCRIPT_DIR="$(cd "$(dirname "${(%):-%x}")" && cd .. && pwd)"
+source "$SCRIPT_DIR/lib/platform.sh"
+
+# Only run on macOS
+if ! is_macos; then
+    echo "⏭️  Skipping terminal theme setup (macOS Terminal.app only)"
+    exit 0
+fi
+
 DOTFILES_DIR="$HOME/dotfiles"
 TERMINAL_DIR="$DOTFILES_DIR/terminal"
 
