@@ -14,10 +14,10 @@ STATE_FILE="$HOME/dotfiles/.setup-state"
 
 # Welcome message
 echo ""
-echo "🚀 Starting interactive dotfiles setup"
+echo -e "${COLOUR_BRIGHT_CYAN}${COLOUR_BOLD}🚀 Starting interactive dotfiles setup${COLOUR_RESET}"
 echo ""
-echo "Welcome! This will configure your development environment."
-echo "You'll be asked a few questions to customise the installation."
+echo -e "${COLOUR_WHITE}Welcome! This will configure your development environment.${COLOUR_RESET}"
+echo -e "${COLOUR_WHITE}You'll be asked a few questions to customise the installation.${COLOUR_RESET}"
 echo ""
 
 # =============================================================================
@@ -30,7 +30,7 @@ list_available_profiles
 echo ""
 
 # Prompt for profile selection
-echo "Choose installation profile:"
+echo -e "${COLOUR_CYAN}Choose installation profile:${COLOUR_RESET}"
 profile_choice=$(prompt_number "Selection" 2 3)
 
 case "$profile_choice" in
@@ -40,7 +40,7 @@ case "$profile_choice" in
 esac
 
 echo ""
-echo "✓ Selected profile: $INSTALL_PROFILE"
+echo -e "${COLOUR_BRIGHT_GREEN}✓ Selected profile: ${COLOUR_BOLD}$INSTALL_PROFILE${COLOUR_RESET}"
 
 # =============================================================================
 # EXISTING CONFIGURATION
@@ -52,9 +52,9 @@ print_section "EXISTING CONFIGURATION"
 conflicts=$(list_conflicts)
 
 if [[ -n "$conflicts" ]]; then
-    echo "Found existing dotfiles:"
+    echo -e "${COLOUR_YELLOW}Found existing dotfiles:${COLOUR_RESET}"
     echo "$conflicts" | while read -r file; do
-        echo "  • $(basename "$file")"
+        echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} $(basename "$file")"
     done
     echo ""
 
@@ -62,7 +62,7 @@ if [[ -n "$conflicts" ]]; then
     if prompt_yes_no "Backup existing files?" "Y"; then
         BACKUP_EXISTING=true
         BACKUP_DIR=$(create_backup_dir)
-        echo "✓ Backups will be saved to: $BACKUP_DIR"
+        echo -e "${COLOUR_BRIGHT_GREEN}✓ Backups will be saved to: ${COLOUR_CYAN}$BACKUP_DIR${COLOUR_RESET}"
         SKIP_EXISTING=false
     else
         # Ask if they want to skip or overwrite
@@ -71,16 +71,16 @@ if [[ -n "$conflicts" ]]; then
             BACKUP_EXISTING=false
             BACKUP_DIR=""
             SKIP_EXISTING=true
-            echo "✓ Existing files will be kept"
+            echo -e "${COLOUR_BRIGHT_GREEN}✓ Existing files will be kept${COLOUR_RESET}"
         else
             BACKUP_EXISTING=false
             BACKUP_DIR=""
             SKIP_EXISTING=false
-            echo "✓ Existing files will be overwritten"
+            echo -e "${COLOUR_BRIGHT_GREEN}✓ Existing files will be overwritten${COLOUR_RESET}"
         fi
     fi
 else
-    echo "No existing dotfiles found - fresh installation"
+    echo -e "${COLOUR_GREEN}No existing dotfiles found - fresh installation${COLOUR_RESET}"
     BACKUP_EXISTING=false
     BACKUP_DIR=""
     SKIP_EXISTING=false
@@ -95,29 +95,29 @@ print_section "CRONTAB"
 # Check if crontab exists
 if crontab -l > /dev/null 2>&1; then
     job_count=$(crontab -l 2>/dev/null | grep -v "^#" | grep -v "^$" | wc -l | tr -d ' ')
-    echo "Found existing crontab with $job_count job(s)."
+    echo -e "${COLOUR_YELLOW}Found existing crontab with ${COLOUR_BOLD}$job_count${COLOUR_RESET}${COLOUR_YELLOW} job(s).${COLOUR_RESET}"
     echo ""
-    echo "This will add:"
+    echo -e "${COLOUR_CYAN}This will add:${COLOUR_RESET}"
     print_list \
         "Weekly Homebrew updates (Sunday 2 AM)" \
         "Monthly Homebrew cleanup (1st of month, 3:30 AM)" \
         "Quarterly Homebrew health checks" \
         "Weekly pnpm store pruning (Monday 3 AM)"
     echo ""
-    echo "Your existing jobs will be backed up to ~/.crontab.backup"
+    echo -e "${COLOUR_DIM}Your existing jobs will be backed up to ~/.crontab.backup${COLOUR_RESET}"
     echo ""
 
     if prompt_yes_no "Replace crontab?" "Y"; then
         REPLACE_CRONTAB=true
-        echo "✓ Crontab will be replaced"
+        echo -e "${COLOUR_BRIGHT_GREEN}✓ Crontab will be replaced${COLOUR_RESET}"
     else
         REPLACE_CRONTAB=false
-        echo "✓ Crontab will be kept as-is"
+        echo -e "${COLOUR_BRIGHT_GREEN}✓ Crontab will be kept as-is${COLOUR_RESET}"
     fi
 else
-    echo "No existing crontab found."
+    echo -e "${COLOUR_GREEN}No existing crontab found.${COLOUR_RESET}"
     echo ""
-    echo "The following scheduled tasks will be added:"
+    echo -e "${COLOUR_CYAN}The following scheduled tasks will be added:${COLOUR_RESET}"
     print_list \
         "Weekly Homebrew updates (Sunday 2 AM)" \
         "Monthly Homebrew cleanup (1st of month, 3:30 AM)" \
@@ -127,10 +127,10 @@ else
 
     if prompt_yes_no "Install crontab?" "Y"; then
         REPLACE_CRONTAB=true
-        echo "✓ Crontab will be installed"
+        echo -e "${COLOUR_BRIGHT_GREEN}✓ Crontab will be installed${COLOUR_RESET}"
     else
         REPLACE_CRONTAB=false
-        echo "✓ Skipping crontab installation"
+        echo -e "${COLOUR_BRIGHT_GREEN}✓ Skipping crontab installation${COLOUR_RESET}"
     fi
 fi
 
@@ -141,10 +141,10 @@ fi
 print_section "DEVELOPMENT TOOLS"
 
 # Node.js version manager
-echo "Node.js version manager:"
-echo "  1) fnm (Fast Node Manager - recommended, lighter)"
-echo "  2) nvm (Node Version Manager - traditional)"
-echo "  3) Both"
+echo -e "${COLOUR_CYAN}Node.js version manager:${COLOUR_RESET}"
+echo -e "  ${COLOUR_WHITE}1)${COLOUR_RESET} fnm (Fast Node Manager - ${COLOUR_GREEN}recommended${COLOUR_RESET}, lighter)"
+echo -e "  ${COLOUR_WHITE}2)${COLOUR_RESET} nvm (Node Version Manager - traditional)"
+echo -e "  ${COLOUR_WHITE}3)${COLOUR_RESET} Both"
 echo ""
 node_choice=$(prompt_number "Selection" 1 3)
 
@@ -154,16 +154,16 @@ case "$node_choice" in
     3) SELECTED_NODE_MANAGER="both" ;;
 esac
 
-echo "✓ Selected: $SELECTED_NODE_MANAGER"
+echo -e "${COLOUR_BRIGHT_GREEN}✓ Selected: ${COLOUR_BOLD}$SELECTED_NODE_MANAGER${COLOUR_RESET}"
 echo ""
 
 # Python version (only for full profile)
 if [[ "$INSTALL_PROFILE" == "full" ]]; then
-    echo "Primary Python version:"
-    echo "  1) Python 3.13 (latest)"
-    echo "  2) Python 3.12"
-    echo "  3) Python 3.11"
-    echo "  4) All versions"
+    echo -e "${COLOUR_CYAN}Primary Python version:${COLOUR_RESET}"
+    echo -e "  ${COLOUR_WHITE}1)${COLOUR_RESET} Python 3.13 ${COLOUR_DIM}(latest)${COLOUR_RESET}"
+    echo -e "  ${COLOUR_WHITE}2)${COLOUR_RESET} Python 3.12"
+    echo -e "  ${COLOUR_WHITE}3)${COLOUR_RESET} Python 3.11"
+    echo -e "  ${COLOUR_WHITE}4)${COLOUR_RESET} All versions"
     echo ""
     python_choice=$(prompt_number "Selection" 1 4)
 
@@ -174,7 +174,7 @@ if [[ "$INSTALL_PROFILE" == "full" ]]; then
         4) SELECTED_PYTHON_VERSION="all" ;;
     esac
 
-    echo "✓ Selected: Python $SELECTED_PYTHON_VERSION"
+    echo -e "${COLOUR_BRIGHT_GREEN}✓ Selected: ${COLOUR_BOLD}Python $SELECTED_PYTHON_VERSION${COLOUR_RESET}"
     echo ""
 else
     # For minimal and developer profiles, default to 3.13
@@ -183,16 +183,16 @@ fi
 
 # Databases (for developer and full profiles)
 if [[ "$INSTALL_PROFILE" != "minimal" ]]; then
-    echo "Database tools:"
+    echo -e "${COLOUR_CYAN}Database tools:${COLOUR_RESET}"
     print_list "PostgreSQL 17" "Redis"
     echo ""
 
     if prompt_yes_no "Install database tools?" "Y"; then
         INSTALL_DATABASES=true
-        echo "✓ Databases will be installed"
+        echo -e "${COLOUR_BRIGHT_GREEN}✓ Databases will be installed${COLOUR_RESET}"
     else
         INSTALL_DATABASES=false
-        echo "✓ Skipping databases"
+        echo -e "${COLOUR_BRIGHT_GREEN}✓ Skipping databases${COLOUR_RESET}"
     fi
 else
     INSTALL_DATABASES=false
@@ -204,38 +204,38 @@ fi
 
 print_section "CONFIRMATION"
 
-echo "Ready to proceed with the following:"
+echo -e "${COLOUR_WHITE}Ready to proceed with the following:${COLOUR_RESET}"
 echo ""
-echo "  Installation profile: $INSTALL_PROFILE"
+echo -e "  ${COLOUR_CYAN}Installation profile:${COLOUR_RESET} ${COLOUR_BOLD}$INSTALL_PROFILE${COLOUR_RESET}"
 
 if [[ "$BACKUP_EXISTING" == "true" ]]; then
-    echo "  Existing files: Backup to $BACKUP_DIR"
+    echo -e "  ${COLOUR_CYAN}Existing files:${COLOUR_RESET} Backup to ${COLOUR_DIM}$BACKUP_DIR${COLOUR_RESET}"
 elif [[ "$SKIP_EXISTING" == "true" ]]; then
-    echo "  Existing files: Keep existing (skip)"
+    echo -e "  ${COLOUR_CYAN}Existing files:${COLOUR_RESET} Keep existing (skip)"
 else
-    echo "  Existing files: Overwrite"
+    echo -e "  ${COLOUR_CYAN}Existing files:${COLOUR_RESET} Overwrite"
 fi
 
 if [[ "$REPLACE_CRONTAB" == "true" ]]; then
-    echo "  Crontab: Replace (backup existing)"
+    echo -e "  ${COLOUR_CYAN}Crontab:${COLOUR_RESET} Replace (backup existing)"
 else
-    echo "  Crontab: Keep existing"
+    echo -e "  ${COLOUR_CYAN}Crontab:${COLOUR_RESET} Keep existing"
 fi
 
-echo "  Node manager: $SELECTED_NODE_MANAGER"
-echo "  Python: $SELECTED_PYTHON_VERSION"
+echo -e "  ${COLOUR_CYAN}Node manager:${COLOUR_RESET} $SELECTED_NODE_MANAGER"
+echo -e "  ${COLOUR_CYAN}Python:${COLOUR_RESET} $SELECTED_PYTHON_VERSION"
 
 if [[ "$INSTALL_DATABASES" == "true" ]]; then
-    echo "  Databases: PostgreSQL 17, Redis"
+    echo -e "  ${COLOUR_CYAN}Databases:${COLOUR_RESET} PostgreSQL 17, Redis"
 else
-    echo "  Databases: Skip"
+    echo -e "  ${COLOUR_CYAN}Databases:${COLOUR_RESET} Skip"
 fi
 
 echo ""
 
 if ! prompt_yes_no "Proceed?" "Y"; then
     echo ""
-    echo "❌ Setup cancelled by user"
+    echo -e "${COLOUR_BRIGHT_RED}❌ Setup cancelled by user${COLOUR_RESET}"
     exit 1
 fi
 
@@ -244,7 +244,7 @@ fi
 # =============================================================================
 
 echo ""
-echo "Generating setup state..."
+echo -e "${COLOUR_CYAN}Generating setup state...${COLOUR_RESET}"
 
 cat > "$STATE_FILE" << EOF
 # Dotfiles Setup State
@@ -268,5 +268,5 @@ SELECTED_PYTHON_VERSION="$SELECTED_PYTHON_VERSION"
 INSTALL_DATABASES=$INSTALL_DATABASES
 EOF
 
-echo "✓ Configuration saved"
+echo -e "${COLOUR_BRIGHT_GREEN}✓ Configuration saved${COLOUR_RESET}"
 echo ""

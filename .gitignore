@@ -196,4 +196,7 @@ typings/
 # But track config/.claude (user settings backup)
 !config/.claude/
 
+# Setup state file (temporary)
+.setup-state
+
 # End of https://www.gitignore.io/api/macos,node,jetbrains+all

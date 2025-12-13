@@ -3,6 +3,12 @@
 # Brewfile Profile Management
 # Handles package selection based on installation profile
 
+# Source colour definitions
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "$SCRIPT_DIR/interactive.sh" ]]; then
+    source "$SCRIPT_DIR/interactive.sh"
+fi
+
 # Applies the selected Brewfile profile
 # Usage: brewfile_path=$(apply_brewfile_profile "developer")
 # Returns: Path to the Brewfile to use with brew bundle
@@ -59,30 +65,30 @@ get_profile_description() {
 
     case "$profile" in
         minimal)
-            echo "Essential tools only (~15 packages)"
-            echo "  • Git, GitHub CLI"
-            echo "  • Shell tools (bash, starship)"
-            echo "  • Node.js (fnm, pnpm)"
-            echo "  • Utilities (jq, ripgrep, direnv)"
+            echo -e "${COLOUR_DIM}Essential tools only (~15 packages)${COLOUR_RESET}"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Git, GitHub CLI"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Shell tools (bash, starship)"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Node.js (fnm, pnpm)"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Utilities (jq, ripgrep, direnv)"
             ;;
         developer)
-            echo "Development environment (~40-50 packages)"
-            echo "  • Everything in Minimal"
-            echo "  • Databases (PostgreSQL, Redis)"
-            echo "  • Containers (OrbStack)"
-            echo "  • Cloud tools (Vercel, AWS SAM, Pulumi)"
-            echo "  • Essential VSCode extensions"
+            echo -e "${COLOUR_DIM}Development environment (~40-50 packages)${COLOUR_RESET}"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Everything in Minimal"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Databases (PostgreSQL, Redis)"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Containers (OrbStack)"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Cloud tools (Vercel, AWS SAM, Pulumi)"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Essential VSCode extensions"
             ;;
         full)
-            echo "Complete installation (~120 packages)"
-            echo "  • Everything in Developer"
-            echo "  • Multiple Python versions"
-            echo "  • Additional cloud SDKs (gcloud, doctl)"
-            echo "  • All VSCode extensions"
-            echo "  • Media and utility tools"
+            echo -e "${COLOUR_DIM}Complete installation (~120 packages)${COLOUR_RESET}"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Everything in Developer"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Multiple Python versions"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Additional cloud SDKs (gcloud, doctl)"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} All VSCode extensions"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} Media and utility tools"
             ;;
         *)
-            echo "Unknown profile"
+            echo -e "${COLOUR_RED}Unknown profile${COLOUR_RESET}"
             ;;
     esac
 }
@@ -105,14 +111,14 @@ count_packages_in_brewfile() {
 # Lists all available profiles
 # Usage: list_available_profiles
 list_available_profiles() {
-    echo "Available installation profiles:"
+    echo -e "${COLOUR_CYAN}Available installation profiles:${COLOUR_RESET}"
     echo ""
-    echo "1. minimal   - $(count_packages_in_brewfile "$HOME/dotfiles/config/setup-profiles/minimal.brewfile") packages"
+    echo -e "${COLOUR_WHITE}1.${COLOUR_RESET} ${COLOUR_BOLD}minimal${COLOUR_RESET}   - ${COLOUR_DIM}$(count_packages_in_brewfile "$HOME/dotfiles/config/setup-profiles/minimal.brewfile") packages${COLOUR_RESET}"
     get_profile_description "minimal" | sed 's/^/     /'
     echo ""
-    echo "2. developer - $(count_packages_in_brewfile "$HOME/dotfiles/config/setup-profiles/developer.brewfile") packages"
+    echo -e "${COLOUR_WHITE}2.${COLOUR_RESET} ${COLOUR_BOLD}developer${COLOUR_RESET} - ${COLOUR_DIM}$(count_packages_in_brewfile "$HOME/dotfiles/config/setup-profiles/developer.brewfile") packages${COLOUR_RESET}"
     get_profile_description "developer" | sed 's/^/     /'
     echo ""
-    echo "3. full      - $(count_packages_in_brewfile "$HOME/dotfiles/Brewfile") packages"
+    echo -e "${COLOUR_WHITE}3.${COLOUR_RESET} ${COLOUR_BOLD}full${COLOUR_RESET}      - ${COLOUR_DIM}$(count_packages_in_brewfile "$HOME/dotfiles/Brewfile") packages${COLOUR_RESET}"
     get_profile_description "full" | sed 's/^/     /'
 }
