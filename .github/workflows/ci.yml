@@ -25,13 +25,14 @@ jobs:
           ignore_paths: |
             .git
             .github
-            config/.zshrc
             config
+            lib
+            setup
+            shell
+          ignore_names: |
             install.sh
             setup.sh
-            setup
-            lib
-            shell
+            .zshrc
 
   docker-tests:
     name: Docker Tests (Linux)
