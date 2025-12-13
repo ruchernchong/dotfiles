@@ -28,14 +28,16 @@ git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 
 # Preview installation (dry-run mode)
-./setup-interactive.sh --dry-run   # or -n
+./setup.sh --dry-run   # or -n
 
 # Run interactive setup
-./setup-interactive.sh
+./setup.sh
 
-# OR: Clone and setup (manual)
-chmod a+x setup.sh
-source setup.sh
+# Skip interactive prompts (uses defaults)
+./setup.sh --no-interactive
+
+# Use specific profile without prompts
+./setup.sh --no-interactive --profile=minimal
 
 # OR: One-line installation
 curl -L https://raw.githubusercontent.com/ruchernchong/dotfiles/master/install.sh | bash
@@ -79,28 +81,28 @@ tail -f /tmp/pnpm-cleanup.log    # pnpm store cleanup
 
 ## Key Components
 
-### Interactive Setup Process
+### Setup Process
 
-The `setup-interactive.sh` script provides a guided setup experience:
+The `setup.sh` script provides both interactive and automated setup:
 
+**Interactive mode** (default):
 - **Dry-run mode**: Use `--dry-run` or `-n` flag to preview configuration without making changes
 - **Profile selection**: Choose between minimal, developer, or full installation
 - **Backup handling**: Options to backup, skip, or overwrite existing dotfiles
 - **Crontab management**: Configure scheduled maintenance tasks
 - **Tool selection**: Choose Node.js version manager (fnm/nvm/both)
 - **Database options**: Select whether to install PostgreSQL and Redis
-- **State generation**: Creates `.setup-state` file that `setup.sh` reads for customised installation
 
-### Automated Setup Process
+**Non-interactive mode** (`--no-interactive`):
+- Uses default settings (full profile)
+- Can specify profile via `--profile=minimal|developer|full`
 
-The `setup.sh` script executes in this order:
-
-1. Makes all `.sh` scripts executable
-2. Runs scripts in `setup/` directory (Homebrew installation)
-3. Runs scripts in `shell/` directory (dotfile symlinking, crontab configuration)
-4. Installs Homebrew packages via `brew bundle install`
-
-**Note**: When `.setup-state` file exists (from interactive setup), `setup.sh` reads it to customise the installation.
+**Installation sequence**:
+1. Collects user preferences (interactive mode only)
+2. Makes all `.sh` scripts executable
+3. Runs scripts in `setup/` directory (Homebrew installation)
+4. Runs scripts in `shell/` directory (dotfile symlinking, crontab configuration)
+5. Installs Homebrew packages via `brew bundle install`
 
 ### Shell Configuration System
 
