@@ -22,15 +22,16 @@ jobs:
           severity: warning
           # Exclude zsh files - ShellCheck only supports sh/bash/dash/ksh
           # Scripts use #!/bin/zsh shebang and zsh-specific features
-          ignore_paths: >-
+          ignore_paths: |
             .git
             .github
             config/.zshrc
+            config
             install.sh
             setup.sh
-            setup/*
-            lib/*
-            shell/*
+            setup
+            lib
+            shell
 
   docker-tests:
     name: Docker Tests (Linux)
