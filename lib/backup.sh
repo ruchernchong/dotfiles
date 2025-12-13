@@ -3,6 +3,12 @@
 # Backup Utilities for Dotfiles Setup
 # Provides safe backup operations for existing configuration files
 
+# Source colour definitions
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "$SCRIPT_DIR/interactive.sh" ]]; then
+    source "$SCRIPT_DIR/interactive.sh"
+fi
+
 # Creates a timestamped backup directory
 # Usage: backup_dir=$(create_backup_dir)
 # Returns: Path to the created backup directory
@@ -38,13 +44,13 @@ backup_if_exists() {
     # Check if file or symlink exists
     if [[ -f "$file" ]] || [[ -L "$file" ]]; then
         local filename=$(basename "$file")
-        echo "  📦 Backing up $filename"
+        echo -e "  ${COLOUR_CYAN}📦 Backing up ${COLOUR_BOLD}$filename${COLOUR_RESET}"
 
         # Use cp -P to preserve symlinks
         if cp -P "$file" "$backup_dir/$filename" 2>/dev/null; then
             return 0
         else
-            echo "  ⚠️  Warning: Failed to backup $filename" >&2
+            echo -e "  ${COLOUR_YELLOW}⚠️  Warning: Failed to backup $filename${COLOUR_RESET}" >&2
             return 1
         fi
     fi
@@ -114,7 +120,7 @@ restore_backup() {
         return 1
     fi
 
-    echo "Restoring dotfiles from: $backup_dir"
+    echo -e "${COLOUR_CYAN}Restoring dotfiles from: ${COLOUR_DIM}$backup_dir${COLOUR_RESET}"
 
     # Restore each file from backup
     for backup_file in "$backup_dir"/*; do
@@ -122,7 +128,7 @@ restore_backup() {
             local filename=$(basename "$backup_file")
             local target="$HOME/$filename"
 
-            echo "  ♻️  Restoring $filename"
+            echo -e "  ${COLOUR_GREEN}♻️  Restoring ${COLOUR_BOLD}$filename${COLOUR_RESET}"
 
             # Remove current file/symlink
             rm -f "$target"
@@ -132,7 +138,7 @@ restore_backup() {
         fi
     done
 
-    echo "✓ Restore complete"
+    echo -e "${COLOUR_BRIGHT_GREEN}✓ Restore complete${COLOUR_RESET}"
     return 0
 }
 
@@ -142,18 +148,18 @@ show_backup_info() {
     local backup_dir="$1"
 
     if [[ ! -d "$backup_dir" ]]; then
-        echo "No backup directory found"
+        echo -e "${COLOUR_YELLOW}No backup directory found${COLOUR_RESET}"
         return 1
     fi
 
-    echo "Backup location: $backup_dir"
-    echo "Backed up files:"
+    echo -e "${COLOUR_CYAN}Backup location:${COLOUR_RESET} ${COLOUR_DIM}$backup_dir${COLOUR_RESET}"
+    echo -e "${COLOUR_CYAN}Backed up files:${COLOUR_RESET}"
 
     for file in "$backup_dir"/*; do
         if [[ -f "$file" ]] || [[ -L "$file" ]]; then
             local filename=$(basename "$file")
             local size=$(du -h "$file" | cut -f1)
-            echo "  • $filename ($size)"
+            echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} $filename ${COLOUR_DIM}($size)${COLOUR_RESET}"
         fi
     done
 }
