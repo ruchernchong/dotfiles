@@ -4,7 +4,7 @@
 # Handles package selection based on installation profile
 
 # Source colour definitions
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="${0:a:h}"
 if [[ -f "$SCRIPT_DIR/interactive.sh" ]]; then
     source "$SCRIPT_DIR/interactive.sh"
 fi

@@ -410,14 +410,13 @@ echo -e "\n📦 Installing Homebrew packages"
 if [[ -n "$INSTALL_PROFILE" ]] && [[ "$INSTALL_PROFILE" != "full" ]]; then
     # Use profile-specific Brewfile
     BREWFILE_PATH=$(apply_brewfile_profile "$INSTALL_PROFILE")
-    if [[ -n "$BREWFILE_PATH" ]] && [[ -f "$BREWFILE_PATH" ]]; then
-        echo "Using $INSTALL_PROFILE profile"
-        brew bundle install --file="$BREWFILE_PATH"
-        rm -f "$BREWFILE_PATH"
-    else
-        echo "Warning: Could not find profile Brewfile, using default"
-        brew bundle install
+    if [[ $? -ne 0 ]] || [[ -z "$BREWFILE_PATH" ]] || [[ ! -f "$BREWFILE_PATH" ]]; then
+        echo "Error: Failed to apply Brewfile profile '$INSTALL_PROFILE'. Aborting." >&2
+        exit 1
     fi
+    echo "Using $INSTALL_PROFILE profile"
+    brew bundle install --file="$BREWFILE_PATH"
+    rm -f "$BREWFILE_PATH"
 else
     # Use default Brewfile (full installation)
     brew bundle install

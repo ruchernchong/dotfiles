@@ -4,7 +4,7 @@
 # Provides safe backup operations for existing configuration files
 
 # Source colour definitions
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="${0:a:h}"
 if [[ -f "$SCRIPT_DIR/interactive.sh" ]]; then
     source "$SCRIPT_DIR/interactive.sh"
 fi
@@ -162,4 +162,31 @@ show_backup_info() {
             echo -e "  ${COLOUR_BLUE}•${COLOUR_RESET} $filename ${COLOUR_DIM}($size)${COLOUR_RESET}"
         fi
     done
+}
+
+# Handles file backup and skip logic for dotfile setup scripts
+# Usage: handle_file_with_backup_and_skip "$HOME/.aliases" "$HOME/dotfiles/config/.aliases"
+# Returns: 0 if file is ready to be symlinked, 1 if should skip
+handle_file_with_backup_and_skip() {
+    local target="$1"
+    local source="$2"
+
+    # Source state file if it exists
+    [[ -f "$HOME/dotfiles/.setup-state" ]] && source "$HOME/dotfiles/.setup-state"
+
+    # Backup if needed
+    if [[ "$BACKUP_EXISTING" == "true" ]] && [[ -n "$BACKUP_DIR" ]]; then
+        backup_if_exists "$target" "$BACKUP_DIR"
+    fi
+
+    # Skip if user chose to skip existing files
+    if [[ -f "$target" ]] && [[ "$SKIP_EXISTING" == "true" ]]; then
+        # Check if it's already correctly symlinked
+        if ! is_correctly_symlinked "$target" "$source"; then
+            echo -e "  ⏭️  Skipping (file exists)"
+            return 1
+        fi
+    fi
+
+    return 0
 }
