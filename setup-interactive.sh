@@ -12,12 +12,26 @@ source "$SCRIPT_DIR/lib/brewfile-profiles.sh"
 # Initialize state file path
 STATE_FILE="$HOME/dotfiles/.setup-state"
 
+# Check for dry-run flag
+DRY_RUN=false
+if [[ "$1" == "--dry-run" ]] || [[ "$1" == "-n" ]]; then
+    DRY_RUN=true
+fi
+
 # Welcome message
 echo ""
+if [[ "$DRY_RUN" == "true" ]]; then
+    echo -e "${COLOUR_BRIGHT_YELLOW}${COLOUR_BOLD}🔍 DRY RUN MODE - No changes will be made${COLOUR_RESET}"
+    echo ""
+fi
 echo -e "${COLOUR_BRIGHT_CYAN}${COLOUR_BOLD}🚀 Starting interactive dotfiles setup${COLOUR_RESET}"
 echo ""
 echo -e "${COLOUR_WHITE}Welcome! This will configure your development environment.${COLOUR_RESET}"
 echo -e "${COLOUR_WHITE}You'll be asked a few questions to customise the installation.${COLOUR_RESET}"
+if [[ "$DRY_RUN" == "true" ]]; then
+    echo ""
+    echo -e "${COLOUR_DIM}Running in dry-run mode - your selections will be shown but not applied.${COLOUR_RESET}"
+fi
 echo ""
 
 # =============================================================================
@@ -244,9 +258,43 @@ fi
 # =============================================================================
 
 echo ""
-echo -e "${COLOUR_CYAN}Generating setup state...${COLOUR_RESET}"
 
-cat > "$STATE_FILE" << EOF
+if [[ "$DRY_RUN" == "true" ]]; then
+    echo -e "${COLOUR_BRIGHT_YELLOW}${COLOUR_BOLD}DRY RUN - Configuration preview:${COLOUR_RESET}"
+    echo ""
+    echo -e "${COLOUR_DIM}The following would be written to ${COLOUR_RESET}${COLOUR_CYAN}$STATE_FILE${COLOUR_RESET}${COLOUR_DIM}:${COLOUR_RESET}"
+    echo ""
+    echo -e "${COLOUR_WHITE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${COLOUR_RESET}"
+    cat << EOF
+# Dotfiles Setup State
+# Generated: $(date)
+# This file is automatically deleted after setup completes
+
+# Installation
+INSTALL_PROFILE="$INSTALL_PROFILE"
+
+# Backup
+BACKUP_EXISTING=$BACKUP_EXISTING
+BACKUP_DIR="$BACKUP_DIR"
+SKIP_EXISTING=$SKIP_EXISTING
+
+# Crontab
+REPLACE_CRONTAB=$REPLACE_CRONTAB
+
+# Development tools
+SELECTED_NODE_MANAGER="$SELECTED_NODE_MANAGER"
+SELECTED_PYTHON_VERSION="$SELECTED_PYTHON_VERSION"
+INSTALL_DATABASES=$INSTALL_DATABASES
+EOF
+    echo -e "${COLOUR_WHITE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${COLOUR_RESET}"
+    echo ""
+    echo -e "${COLOUR_BRIGHT_YELLOW}ℹ️  No changes were made (dry-run mode)${COLOUR_RESET}"
+    echo -e "${COLOUR_DIM}To perform the actual setup, run without --dry-run flag:${COLOUR_RESET}"
+    echo -e "  ${COLOUR_CYAN}./setup-interactive.sh${COLOUR_RESET}"
+else
+    echo -e "${COLOUR_CYAN}Generating setup state...${COLOUR_RESET}"
+
+    cat > "$STATE_FILE" << EOF
 # Dotfiles Setup State
 # Generated: $(date)
 # This file is automatically deleted after setup completes
@@ -268,5 +316,7 @@ SELECTED_PYTHON_VERSION="$SELECTED_PYTHON_VERSION"
 INSTALL_DATABASES=$INSTALL_DATABASES
 EOF
 
-echo -e "${COLOUR_BRIGHT_GREEN}✓ Configuration saved${COLOUR_RESET}"
+    echo -e "${COLOUR_BRIGHT_GREEN}✓ Configuration saved${COLOUR_RESET}"
+fi
+
 echo ""
