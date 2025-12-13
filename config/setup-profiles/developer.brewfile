@@ -1,0 +1,66 @@
+# Developer Brewfile Profile
+# Comprehensive development environment (~40-50 packages)
+# Includes databases, containers, cloud tools, and essential VSCode extensions
+
+# Core development tools
+brew "git"
+brew "gh"
+
+# Shell and prompt
+brew "bash"
+brew "bash-completion"
+brew "starship"
+
+# Node.js ecosystem
+brew "fnm"
+brew "node"
+brew "pnpm"
+brew "yarn"
+brew "oven-sh/bun/bun"
+
+# Python
+brew "python@3.13"
+
+# Databases
+brew "postgresql@17"
+brew "redis", restart_service: :changed
+
+# Container and virtualisation
+brew "lima"
+
+# Cloud tools
+brew "vercel-cli"
+brew "aws-sam-cli"
+brew "pulumi"
+
+# Build and development tools
+brew "watchman"
+brew "rustup"
+brew "direnv"
+
+# Utilities
+brew "jq"
+brew "ripgrep"
+brew "tree"
+brew "httpie"
+brew "imagemagick"
+
+# Casks (GUI applications)
+cask "1password-cli"
+cask "ngrok"
+cask "orbstack"
+cask "zed"
+cask "redis-insight"
+
+# Essential VSCode extensions
+vscode "anthropic.claude-code"
+vscode "dbaeumer.vscode-eslint"
+vscode "esbenp.prettier-vscode"
+vscode "eamodio.gitlens"
+vscode "editorconfig.editorconfig"
+vscode "bradlc.vscode-tailwindcss"
+vscode "ms-vscode.vscode-typescript-next"
+vscode "docker.docker"
+vscode "ms-azuretools.vscode-docker"
+vscode "mikestead.dotenv"
+vscode "biomejs.biome"
