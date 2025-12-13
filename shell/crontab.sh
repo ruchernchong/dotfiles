@@ -1,6 +1,16 @@
 #!/bin/zsh
 
+# Source state file if it exists
+[[ -f "$HOME/dotfiles/.setup-state" ]] && source "$HOME/dotfiles/.setup-state"
+
 echo -e "Updating crontab configuration..."
+
+# Check if user chose to skip crontab replacement
+# Default to true (replace) if not explicitly set to false
+if [[ "${REPLACE_CRONTAB:-true}" == "false" ]]; then
+    echo -e "  ⏭️  Skipping crontab replacement (user choice)"
+    exit 0
+fi
 
 # Backup existing crontab if it exists
 if crontab -l > /dev/null 2>&1; then
