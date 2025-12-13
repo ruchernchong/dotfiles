@@ -60,27 +60,6 @@ if [[ "$INTERACTIVE_MODE" == "true" ]]; then
     echo ""
 
     # -------------------------------------------------------------------------
-    # INSTALLATION SCOPE
-    # -------------------------------------------------------------------------
-
-    print_section "INSTALLATION SCOPE"
-
-    list_available_profiles
-    echo ""
-
-    echo -e "${COLOUR_CYAN}Choose installation profile:${COLOUR_RESET}"
-    profile_choice=$(prompt_number "Selection" 2 3)
-
-    case "$profile_choice" in
-        1) INSTALL_PROFILE="minimal" ;;
-        2) INSTALL_PROFILE="developer" ;;
-        3) INSTALL_PROFILE="full" ;;
-    esac
-
-    echo ""
-    echo -e "${COLOUR_BRIGHT_GREEN}✓ Selected profile: ${COLOUR_BOLD}$INSTALL_PROFILE${COLOUR_RESET}"
-
-    # -------------------------------------------------------------------------
     # EXISTING CONFIGURATION
     # -------------------------------------------------------------------------
 
@@ -138,6 +117,27 @@ if [[ "$INTERACTIVE_MODE" == "true" ]]; then
         BACKUP_DIR=""
         SKIP_EXISTING=false
     fi
+
+    # -------------------------------------------------------------------------
+    # INSTALLATION SCOPE
+    # -------------------------------------------------------------------------
+
+    print_section "INSTALLATION SCOPE"
+
+    list_available_profiles
+    echo ""
+
+    echo -e "${COLOUR_CYAN}Choose installation profile:${COLOUR_RESET}"
+    profile_choice=$(prompt_number "Selection" 2 3)
+
+    case "$profile_choice" in
+        1) INSTALL_PROFILE="minimal" ;;
+        2) INSTALL_PROFILE="developer" ;;
+        3) INSTALL_PROFILE="full" ;;
+    esac
+
+    echo ""
+    echo -e "${COLOUR_BRIGHT_GREEN}✓ Selected profile: ${COLOUR_BOLD}$INSTALL_PROFILE${COLOUR_RESET}"
 
     # -------------------------------------------------------------------------
     # CRONTAB CONFIGURATION
