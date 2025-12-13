@@ -22,7 +22,7 @@ This is a personal dotfiles repository for macOS/Linux development environment s
   - `aliases.sh`: Symlinks shell aliases configuration
   - `zshrc.sh`: Symlinks Zsh configuration
   - `vim.sh`: Symlinks Vim configuration
-  - `claude.sh`: Symlinks Claude Code settings
+  - `claude.sh`: Symlinks Claude Code settings and global CLAUDE.md
   - `crontab.sh`: Configures scheduled maintenance tasks
   - `terminal.sh`: macOS Terminal.app configuration (macOS only)
   - `misc.sh`: Additional miscellaneous configurations
@@ -32,6 +32,7 @@ This is a personal dotfiles repository for macOS/Linux development environment s
   - `.zshrc`, `.aliases`, `.vimrc`: Shell and editor configurations
   - `crontab`: Scheduled maintenance job definitions
   - `.claude/settings.json`: Claude Code user settings
+  - `.claude/CLAUDE.md`: Global Claude Code instructions
   - `setup-profiles/`: Installation profile Brewfiles (minimal.brewfile, developer.brewfile)
 - **Brewfile**: Homebrew package manifest for consistent package installation across machines (full installation)
 
@@ -134,12 +135,12 @@ The `setup.sh` script provides both interactive and automated setup:
 
 ### Claude Code Settings
 
-User-level Claude Code settings are backed up and version-controlled:
+User-level Claude Code settings and global instructions are backed up and version-controlled:
 
-- **Location**: `config/.claude/settings.json`
-- **Symlinked to**: `~/.claude/settings.json`
+- **Settings Location**: `config/.claude/settings.json` → symlinked to `~/.claude/settings.json`
+- **Global Instructions**: `config/.claude/CLAUDE.md` → symlinked to `~/.claude/CLAUDE.md`
 - **Setup**: Automatically configured via `shell/claude.sh` during `setup.sh` execution
-- **Manual restore**: Run `source $HOME/dotfiles/shell/claude.sh` to restore the symlink
+- **Manual restore**: Run `source $HOME/dotfiles/shell/claude.sh` to restore the symlinks
 
 ### Git Aliases
 
