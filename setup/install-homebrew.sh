@@ -8,7 +8,11 @@ if ! type brew &> /dev/null; then
     echo "Installing Homebrew!"
     echo "Platform detected: $(get_os_name)"
 
-    # Use official Homebrew installer (works on macOS and Linux)
+    # Security note: This uses the official Homebrew installer from brew.sh
+    # The script is fetched from GitHub's raw content delivery.
+    # For additional verification, see: https://docs.brew.sh/Installation
+    # You can also manually verify the script at:
+    # https://github.com/Homebrew/install/blob/HEAD/install.sh
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     # On Linux, add Homebrew to PATH for current session
