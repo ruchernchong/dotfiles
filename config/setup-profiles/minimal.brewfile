@@ -1,0 +1,25 @@
+# Minimal Brewfile Profile
+# Essential development tools only (~15 packages)
+# Optimised for quick setup and minimal footprint
+
+# Core development tools
+brew "git"
+brew "gh"
+
+# Shell and prompt
+brew "bash"
+brew "bash-completion"
+brew "starship"
+
+# Node.js management
+brew "fnm"
+
+# Package managers
+brew "pnpm"
+
+# Essential utilities
+brew "jq"
+brew "ripgrep"
+brew "direnv"
+brew "tree"
+brew "httpie"

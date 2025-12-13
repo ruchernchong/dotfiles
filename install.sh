@@ -8,6 +8,6 @@ fi
 git clone https://github.com/ruchernchong/dotfiles $HOME/dotfiles
 cd $HOME/dotfiles
 chmod a+x setup.sh
-source setup.sh
+source setup.sh "$@"
 
 echo "Installation has completed."
