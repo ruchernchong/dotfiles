@@ -23,13 +23,21 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 ### Initial Setup
 
 ```bash
-# Clone and setup (manual)
+# Clone and setup (interactive - recommended)
 git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
+
+# Preview installation (dry-run mode)
+./setup-interactive.sh --dry-run   # or -n
+
+# Run interactive setup
+./setup-interactive.sh
+
+# OR: Clone and setup (manual)
 chmod a+x setup.sh
 source setup.sh
 
-# One-line installation
+# OR: One-line installation
 curl -L https://raw.githubusercontent.com/ruchernchong/dotfiles/master/install.sh | bash
 ```
 
@@ -71,6 +79,18 @@ tail -f /tmp/pnpm-cleanup.log    # pnpm store cleanup
 
 ## Key Components
 
+### Interactive Setup Process
+
+The `setup-interactive.sh` script provides a guided setup experience:
+
+- **Dry-run mode**: Use `--dry-run` or `-n` flag to preview configuration without making changes
+- **Profile selection**: Choose between minimal, developer, or full installation
+- **Backup handling**: Options to backup, skip, or overwrite existing dotfiles
+- **Crontab management**: Configure scheduled maintenance tasks
+- **Tool selection**: Choose Node.js version manager (fnm/nvm/both)
+- **Database options**: Select whether to install PostgreSQL and Redis
+- **State generation**: Creates `.setup-state` file that `setup.sh` reads for customised installation
+
 ### Automated Setup Process
 
 The `setup.sh` script executes in this order:
@@ -79,6 +99,8 @@ The `setup.sh` script executes in this order:
 2. Runs scripts in `setup/` directory (Homebrew installation)
 3. Runs scripts in `shell/` directory (dotfile symlinking, crontab configuration)
 4. Installs Homebrew packages via `brew bundle install`
+
+**Note**: When `.setup-state` file exists (from interactive setup), `setup.sh` reads it to customise the installation.
 
 ### Shell Configuration System
 

@@ -128,6 +128,29 @@ zshconfig  # alias for 'vi $HOME/.zshrc'
 
 **Warning:** Do not blindly use these settings as they may override or modify your existing configuration. It is highly recommended to clone/fork this repository to another folder. Use at your own risk!
 
+### Interactive Installation (Recommended)
+
+The interactive setup guides you through customising your installation:
+
+```bash
+# Clone the repository
+git clone https://github.com/ruchernchong/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles
+
+# Preview what would be installed (dry-run mode)
+./setup-interactive.sh --dry-run
+
+# Run the interactive setup
+./setup-interactive.sh
+```
+
+The interactive setup allows you to:
+- Choose installation profile (minimal/developer/full)
+- Select Node.js version manager (fnm/nvm/both)
+- Configure backup options for existing files
+- Customise database installations
+- Preview changes before applying
+
 ### One-line Installation
 
 ```bash
