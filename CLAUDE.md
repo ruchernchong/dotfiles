@@ -26,6 +26,10 @@ This is a personal dotfiles repository for macOS/Linux development environment s
   - `crontab.sh`: Configures scheduled maintenance tasks
   - `terminal.sh`: macOS Terminal.app configuration (macOS only)
   - `misc.sh`: Additional miscellaneous configurations
+  - `sudo-touch-id/`: Touch ID for sudo authentication (macOS only)
+    - `setup.sh`: Configures Touch ID authentication for sudo commands
+    - `verify.sh`: Verifies Touch ID configuration
+    - `restore.sh`: Restores original PAM configuration
 - **Setup Scripts** (`setup/`): Core installation scripts
   - `install-homebrew.sh`: Homebrew installation for macOS/Linux
 - **Configuration Files** (`config/`): Symlinked dotfiles and settings
@@ -34,6 +38,9 @@ This is a personal dotfiles repository for macOS/Linux development environment s
   - `.claude/settings.json`: Claude Code user settings
   - `.claude/CLAUDE.md`: Global Claude Code instructions
   - `setup-profiles/`: Installation profile Brewfiles (minimal.brewfile, developer.brewfile)
+- **Scripts** (`scripts/`): Utility scripts
+  - `link-node.sh`: Node.js symlink management
+- **Testing** (`test-setup.sh`, `docker-compose.yml`, `Dockerfile`, `TESTING.md`): Docker-based testing infrastructure for validating setup scripts
 - **Brewfile**: Homebrew package manifest for consistent package installation across machines (full installation)
 
 ## Common Commands
@@ -91,10 +98,44 @@ crontab -l
 crontab $HOME/dotfiles/config/crontab
 
 # View maintenance logs
-tail -f /tmp/brew-weekly.log     # Weekly Homebrew updates
-tail -f /tmp/brew-cleanup.log    # Monthly cleanup
-tail -f /tmp/brew-health.log     # Quarterly health checks
-tail -f /tmp/pnpm-cleanup.log    # pnpm store cleanup
+tail -f /tmp/brew-weekly.log     # Weekly Homebrew updates (Sunday 2 AM)
+tail -f /tmp/brew-cleanup.log    # Monthly cleanup (1st of month, 3:30 AM)
+tail -f /tmp/brew-health.log     # Quarterly health checks (Jan/Apr/Jul/Oct, 4 AM)
+tail -f /tmp/pnpm-cleanup.log    # Weekly pnpm store pruning (Monday 3 AM)
+```
+
+### Testing
+
+```bash
+# Test setup script with Docker (dry-run mode)
+./test-setup.sh
+
+# Test specific profile
+./test-setup.sh minimal
+./test-setup.sh developer
+./test-setup.sh full
+
+# Test all scenarios
+./test-setup.sh all
+
+# Interactive debugging
+./test-setup.sh shell
+
+# Clean up test containers
+./test-setup.sh clean
+```
+
+### Touch ID for Sudo (macOS only)
+
+```bash
+# Setup Touch ID for sudo commands
+sudo zsh shell/sudo-touch-id/setup.sh
+
+# Verify Touch ID configuration
+zsh shell/sudo-touch-id/verify.sh
+
+# Restore original PAM configuration
+sudo zsh shell/sudo-touch-id/restore.sh
 ```
 
 ## Key Components
@@ -156,10 +197,22 @@ Extensive git aliases defined in `.aliases`:
 
 Automated maintenance tasks via crontab:
 
-- **Weekly**: Homebrew update check (Sundays 2 AM)
-- **Monthly**: Homebrew cleanup and pnpm store pruning
-- **Quarterly**: Homebrew health diagnostics
+- **Weekly**:
+  - Homebrew update check (Sundays 2 AM)
+  - pnpm store pruning (Mondays 3 AM)
+- **Monthly**: Homebrew cleanup (1st of month, 3:30 AM)
+- **Quarterly**: Homebrew health diagnostics (Jan/Apr/Jul/Oct, 4 AM)
 - **Logs**: All maintenance logged to `/tmp/` for review
+
+### Touch ID for Sudo (macOS only)
+
+Enable Touch ID authentication for sudo commands:
+
+- **Setup**: Modifies PAM configuration to enable Touch ID
+- **Security**: Uses `/etc/pam.d/sudo_local` (survives macOS updates)
+- **Requirements**: macOS 10.15 (Catalina) or later
+- **Verification**: Includes verify script to test configuration
+- **Restore**: Can restore original configuration if needed
 
 ## Development Environment
 

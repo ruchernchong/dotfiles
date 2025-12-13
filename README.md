@@ -1,5 +1,15 @@
 # dotfiles
 
+<div align="center">
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![Platform: macOS | Linux](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux-lightgrey.svg?style=for-the-badge)](https://github.com/ruchernchong/dotfiles)
+[![Shell: Zsh](https://img.shields.io/badge/Shell-Zsh-89E051.svg?style=for-the-badge)](https://www.zsh.org/)
+[![Homebrew](https://img.shields.io/badge/Homebrew-2.0+-orange.svg?style=for-the-badge)](https://brew.sh/)
+[![Docker](https://img.shields.io/badge/Docker-Testing-2496ED.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+
+</div>
+
 This repository contains dotfiles and scripts that I use to customise my macOS/Linux development workflow. Feel free to use this as a reference for your own setup.
 
 ![Terminal](terminal.png)
@@ -27,11 +37,15 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 ## Features
 
 - **Automated Setup**: Complete development environment setup with a single command
+- **Interactive Installation**: Customisable setup with profile selection and dry-run mode
 - **Shell Configuration**: Oh-My-Zsh with Starship prompt and syntax highlighting
-- **Package Management**: Homebrew Brewfile for consistent package installation
+- **Package Management**: Homebrew Brewfile for consistent package installation with profile support (minimal/developer/full)
 - **Git Integration**: Comprehensive git aliases and configuration
 - **Node.js Management**: `fnm` for Node.js version management
 - **Development Tools**: VSCode, cloud tools, databases, and utilities
+- **Touch ID for Sudo**: Enable Touch ID authentication for sudo commands (macOS only)
+- **Scheduled Maintenance**: Automated Homebrew and pnpm maintenance via crontab
+- **Docker Testing**: Test setup scripts in isolated environment
 - **Cross-platform**: Support for macOS and Linux
 
 ## System Requirements
@@ -50,9 +64,11 @@ This is a personal dotfiles repository for macOS/Linux development environment s
 ## Architecture
 
 - **Library Functions** (`lib/`): Shared utility libraries for platform detection, interactive prompts, backup management, and profile selection
-- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim, Claude Code, crontab)
+- **Shell Scripts** (`shell/`): Modular setup scripts for different components (aliases, zsh, vim, Claude Code, crontab, Touch ID for sudo)
 - **Setup Scripts** (`setup/`): Core installation scripts (Homebrew installation)
 - **Configuration Files** (`config/`): Symlinked dotfiles (`.zshrc`, `.aliases`, `.vimrc`) and settings (`.claude/settings.json`, `crontab`)
+- **Scripts** (`scripts/`): Utility scripts (Node.js symlink management)
+- **Testing**: Docker-based testing infrastructure (`test-setup.sh`, `docker-compose.yml`, `Dockerfile`, `TESTING.md`)
 - **Brewfile**: Homebrew package manifest with profile support (minimal, developer, full)
 
 ## Key Components
@@ -131,8 +147,42 @@ crontab $HOME/dotfiles/config/crontab
 # View maintenance logs
 tail -f /tmp/brew-weekly.log     # Weekly Homebrew updates (Sunday 2 AM)
 tail -f /tmp/brew-cleanup.log    # Monthly cleanup (1st of month, 3:30 AM)
-tail -f /tmp/brew-health.log     # Quarterly health checks (Jan/Apr/Jul/Oct)
+tail -f /tmp/brew-health.log     # Quarterly health checks (Jan/Apr/Jul/Oct, 4 AM)
 tail -f /tmp/pnpm-cleanup.log    # Weekly pnpm store pruning (Monday 3 AM)
+```
+
+### Testing
+```bash
+# Test setup script with Docker (dry-run mode)
+./test-setup.sh
+
+# Test specific profile
+./test-setup.sh minimal
+./test-setup.sh developer
+./test-setup.sh full
+
+# Test all scenarios
+./test-setup.sh all
+
+# Interactive debugging
+./test-setup.sh shell
+
+# Clean up test containers
+./test-setup.sh clean
+```
+
+For more details, see [TESTING.md](TESTING.md)
+
+### Touch ID for Sudo (macOS only)
+```bash
+# Setup Touch ID for sudo commands
+sudo zsh shell/sudo-touch-id/setup.sh
+
+# Verify Touch ID configuration
+zsh shell/sudo-touch-id/verify.sh
+
+# Restore original PAM configuration
+sudo zsh shell/sudo-touch-id/restore.sh
 ```
 
 ## Configurations
@@ -154,6 +204,19 @@ User-level Claude Code settings are backed up and version-controlled:
 - **Symlinked to**: `~/.claude/settings.json`
 - **Setup**: Automatically configured during `setup.sh` execution
 - **Manual restore**: Run `source $HOME/dotfiles/shell/claude.sh` to restore the symlink
+
+### Touch ID for Sudo (macOS only)
+
+Enable Touch ID authentication for sudo commands:
+
+- **Setup**: Modifies PAM configuration to enable Touch ID
+- **Security**: Uses `/etc/pam.d/sudo_local` (survives macOS updates)
+- **Requirements**: macOS 10.15 (Catalina) or later
+- **Features**:
+  - Interactive warning before making system changes
+  - Verification script to test configuration
+  - Restore script to revert to original configuration
+  - Version checks to ensure compatibility
 
 ### Git Aliases (Extensive Collection)
 
