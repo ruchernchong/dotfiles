@@ -3,10 +3,14 @@
 # Brewfile Profile Management
 # Handles package selection based on installation profile
 
-# Source colour definitions
-SCRIPT_DIR="${0:a:h}"
-if [[ -f "$SCRIPT_DIR/interactive.sh" ]]; then
-    source "$SCRIPT_DIR/interactive.sh"
+# Source colour definitions if not already loaded
+if [[ -z "$COLOUR_RESET" ]]; then
+    # Try common locations for interactive.sh
+    if [[ -f "$HOME/dotfiles/lib/interactive.sh" ]]; then
+        source "$HOME/dotfiles/lib/interactive.sh"
+    elif [[ -f "${0:a:h}/interactive.sh" ]]; then
+        source "${0:a:h}/interactive.sh"
+    fi
 fi
 
 # Applies the selected Brewfile profile
