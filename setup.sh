@@ -6,6 +6,7 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Source required libraries
+source "$SCRIPT_DIR/lib/platform.sh"
 source "$SCRIPT_DIR/lib/interactive.sh"
 source "$SCRIPT_DIR/lib/backup.sh"
 source "$SCRIPT_DIR/lib/brewfile-profiles.sh"
@@ -364,6 +365,22 @@ echo -e "\n🐚 Processing shell scripts..."
 SHELL_FILES="$SCRIPT_DIR/shell"
 for file in "$SHELL_FILES"/*; do
     filename=$(basename "$file")
+
+    # Skip if not a file
+    if [[ ! -f "$file" ]]; then
+        continue
+    fi
+
+    # Skip macOS-specific scripts on non-macOS platforms
+    if ! is_macos; then
+        case "$filename" in
+            terminal.sh|sudo-touch-id*)
+                echo -e "  ⏭️  Skipping $filename (macOS only, detected: $(get_os_name))"
+                continue
+                ;;
+        esac
+    fi
+
     if [[ -x "$file" ]]; then
         echo -e "  ✅ Executing shell script: $filename"
         "$file"
