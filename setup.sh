@@ -115,7 +115,25 @@ if [[ "$INTERACTIVE_MODE" == "true" ]]; then
             fi
         fi
     else
-        echo -e "${COLOUR_GREEN}No existing dotfiles found - fresh installation${COLOUR_RESET}"
+        # Check if dotfiles are already configured vs fresh installation
+        already_configured=false
+        if [[ -L "$HOME/.zshrc" ]] && [[ "$(readlink "$HOME/.zshrc")" == "$HOME/dotfiles/"* ]]; then
+            already_configured=true
+        fi
+
+        if [[ "$already_configured" == "true" ]]; then
+            echo -e "${COLOUR_BRIGHT_GREEN}✓ Your dotfiles are already set up correctly!${COLOUR_RESET}"
+            echo ""
+
+            if ! prompt_yes_no "Continue with setup anyway?" "N"; then
+                echo ""
+                echo -e "${COLOUR_BRIGHT_CYAN}Setup cancelled - your dotfiles are already configured.${COLOUR_RESET}"
+                exit 0
+            fi
+        else
+            echo -e "${COLOUR_GREEN}No existing dotfiles found - fresh installation${COLOUR_RESET}"
+        fi
+
         BACKUP_EXISTING=false
         BACKUP_DIR=""
         SKIP_EXISTING=false
