@@ -6,7 +6,8 @@
 echo -e "Updating crontab configuration..."
 
 # Check if user chose to skip crontab replacement
-if [[ "$REPLACE_CRONTAB" == "false" ]]; then
+# Default to true (replace) if not explicitly set to false
+if [[ "${REPLACE_CRONTAB:-true}" == "false" ]]; then
     echo -e "  ⏭️  Skipping crontab replacement (user choice)"
     exit 0
 fi
