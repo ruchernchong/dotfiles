@@ -3,7 +3,10 @@
     "ENABLE_TOOL_SEARCH": "true",
     "MAX_THINKING_TOKENS": "31999"
   },
-  "includeCoAuthoredBy": false,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(git status:*)",
