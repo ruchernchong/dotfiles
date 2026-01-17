@@ -190,7 +190,6 @@ typings/
 .fusebox/
 
 # Claude Code
-/.claude/
 CLAUDE.local.md
 .claude/settings.local.json
 .setup-state
