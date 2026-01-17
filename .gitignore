@@ -189,14 +189,21 @@ typings/
 # FuseBox cache
 .fusebox/
 
-# Claude
+# Claude Code
+# Exclude all .claude directories by default
 **/.claude/*
+
+# Allow skills and commands (can be shared)
 !**/.claude/skills/
 !**/.claude/commands/
-# But track config/.claude (user settings backup)
+
+# Exclude local-only memory files (private instructions)
+CLAUDE.local.md
+**/CLAUDE.local.md
+
+# Track config/.claude (user settings backup for dotfiles)
 !config/.claude/
 !config/.claude/settings.json
-!config/.claude/CLAUDE.md
 
 # Setup state file (temporary)
 .setup-state
