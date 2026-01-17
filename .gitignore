@@ -190,22 +190,9 @@ typings/
 .fusebox/
 
 # Claude Code
-# Exclude all .claude directories by default
-**/.claude/*
-
-# Allow skills and commands (can be shared)
-!**/.claude/skills/
-!**/.claude/commands/
-
-# Exclude local-only memory files (private instructions)
+/.claude/
 CLAUDE.local.md
-**/CLAUDE.local.md
-
-# Track config/.claude (user settings backup for dotfiles)
-!config/.claude/
-!config/.claude/settings.json
-
-# Setup state file (temporary)
+.claude/settings.local.json
 .setup-state
 
 # End of https://www.gitignore.io/api/macos,node,jetbrains+all
