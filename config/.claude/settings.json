@@ -1,6 +1,6 @@
 {
   "env": {
-    "ENABLE_EXPERIMENTAL_MCP_CLI": true,
+    "ENABLE_TOOL_SEARCH": "true",
     "MAX_THINKING_TOKENS": "31999"
   },
   "includeCoAuthoredBy": false,
@@ -120,7 +120,13 @@
     "command": "bun x ccusage statusline --visual-burn-rate emoji"
   },
   "enabledPlugins": {
-    "frontend-design@claude-code-plugins": true
+    "frontend-design@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true
 }
