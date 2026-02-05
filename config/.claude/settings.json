@@ -1,6 +1,15 @@
 {
   "env": {
-    "ENABLE_TOOL_SEARCH": "true"
+    "ENABLE_TOOL_SEARCH": "true",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": 1,
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "OTEL_METRICS_EXPORTER": "otlp",
+    "OTEL_LOGS_EXPORTER": "otlp",
+    "OTEL_EXPORTER_OTLP_PROTOCOL": "grpc",
+    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://otlp-gateway-prod-ap-southeast-1.grafana.net/otlp",
+    "OTEL_EXPORTER_OTLP_HEADERS": "Authorization=Basic MTUwMTc0MzpnbGNfZXlKdklqb2lNVFkwTnpBNU9TSXNJbTRpT2lKemRHRmpheTB4TlRBeE56UXpMVzkwYkhBdGQzSnBkR1V0WTJ4aGRXUmxMV052WkdVaUxDSnJJam9pVEVGdFUwcDBNakJ0VWxVMU1ESlVNR3hhT0VnM1R6a3hJaXdpYlNJNmV5SnlJam9pY0hKdlpDMWhjQzF6YjNWMGFHVmhjM1F0TVNKOWZRPT0=",
+    "OTEL_METRIC_EXPORT_INTERVAL": 10000,
+    "OTEL_LOGS_EXPORT_INTERVAL": 5000
   },
   "attribution": {
     "commit": "",
@@ -128,6 +137,7 @@
     "security-guidance@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
   }
 }
