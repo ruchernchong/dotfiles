@@ -1,6 +1,6 @@
-# Pure custom git alias that suits my preference. This has no relevance to any other git alias that you may have seen from somewhere else 
+# Pure custom git alias that suits my preference. This has no relevance to any other git alias that you may have seen from somewhere else
 
-alias gh='gh';
+# alias gh='gh';
 alias g='git';
 alias gb='git branch';
 alias gba='git branch -a';
@@ -25,6 +25,9 @@ alias grb='git rebase';
 
 # Miscellaneous aliases
 alias ll="ls -la";
+
+# Vercel alias
+alias vc='vercel --token $VERCEL_TOKEN';
 
 # Directory aliases
 alias sgcarstrends="cd $HOME/projects/@sgcarstrends"
