@@ -121,7 +121,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bun x ccusage statusline"
+    "command": "bun x ccusage statusline",
+    "padding": 0
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
