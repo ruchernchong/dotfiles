@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ccusage.com/config-schema.json",
+  "defaults": {
+    "timezone": "Asia/Singapore",
+    "locale": "en-SG",
+    "breakdown": true,
+    "mode": "auto"
+  },
+  "commands": {
+    "daily": {
+      "instances": true
+    },
+    "monthly": {
+      "breakdown": true,
+      "order": "desc"
+    }
+  }
+}

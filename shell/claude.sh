@@ -3,6 +3,7 @@
 echo -e "Updating Claude Code settings..."
 
 mkdir -p "$HOME/.claude"
+mkdir -p "$HOME/.config/claude"
 
 # Source backup utilities
 source "$HOME/dotfiles/lib/backup.sh"
@@ -25,3 +26,13 @@ ln -s "$HOME/dotfiles/config/.claude/settings.json" "$HOME/.claude/settings.json
 
 rm -f "$HOME/.claude/CLAUDE.md"
 ln -s "$HOME/dotfiles/config/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+
+# Handle backup and skip logic for ccusage.json
+if ! handle_file_with_backup_and_skip "$HOME/.config/claude/ccusage.json" "$HOME/dotfiles/config/.config/claude/ccusage.json"; then
+    echo -e "  ⏭️  Skipping ccusage.json (file exists)"
+    exit 0
+fi
+
+# Create symlink for ccusage config
+rm -f "$HOME/.config/claude/ccusage.json"
+ln -s "$HOME/dotfiles/config/.config/claude/ccusage.json" "$HOME/.config/claude/ccusage.json"
