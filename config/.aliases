@@ -28,6 +28,7 @@ alias ll="ls -la";
 
 # Vercel alias
 alias vc='vercel --token $VERCEL_TOKEN';
+alias vercel='vercel --token $VERCEL_TOKEN';
 
 # Directory aliases
 alias sgcarstrends="cd $HOME/projects/@sgcarstrends"
