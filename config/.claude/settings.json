@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
@@ -89,7 +90,8 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "mcp__shadcn__view_items_in_registries",
       "mcp__shadcn__get_add_command_for_items",
-      "mcp__shadcn__get_item_examples_from_registries"
+      "mcp__shadcn__get_item_examples_from_registries",
+      "mcp__pencil"
     ],
     "deny": [
       "Bash(sudo rm -rf /*:*)",
@@ -121,8 +123,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bun x ccusage statusline",
-    "padding": 0
+    "command": "zsh ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
@@ -132,6 +133,18 @@
     "code-simplifier@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true
-  }
+    "vercel@claude-plugins-official": true,
+    "vercel-plugin@vercel-vercel-plugin": true,
+    "telegram@claude-plugins-official": true,
+    "discord@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "vercel-vercel-plugin": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/ruchernchong/.cache/plugins/github.com-vercel-vercel-plugin"
+      }
+    }
+  },
+  "effortLevel": "high"
 }

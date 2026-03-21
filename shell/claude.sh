@@ -27,6 +27,9 @@ ln -s "$HOME/dotfiles/config/.claude/settings.json" "$HOME/.claude/settings.json
 rm -f "$HOME/.claude/CLAUDE.md"
 ln -s "$HOME/dotfiles/config/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 
+rm -f "$HOME/.claude/statusline-command.sh"
+ln -s "$HOME/dotfiles/config/.claude/statusline-command.sh" "$HOME/.claude/statusline-command.sh"
+
 # Handle backup and skip logic for ccusage.json
 if ! handle_file_with_backup_and_skip "$HOME/.config/claude/ccusage.json" "$HOME/dotfiles/config/.config/claude/ccusage.json"; then
     echo -e "  ⏭️  Skipping ccusage.json (file exists)"
