@@ -75,9 +75,9 @@ LINE2=""
 if [ -n "$rate_5h" ]; then
   pct=$(printf '%.0f' "$rate_5h")
   colour=$(colour_for_pct "$rate_5h")
-  if [ "$pct" -ge 100 ] && [ -n "$resets_5h" ]; then
+  if [ -n "$resets_5h" ]; then
     remaining=$(countdown "$resets_5h")
-    LINE2="✨ Current: $(printf '%b' "${colour}${pct}% resets:${remaining}\033[0m")"
+    LINE2="✨ Current: $(printf '%b' "${colour}${pct}% resets: ${remaining}\033[0m")"
   else
     LINE2="✨ Current: $(printf '%b' "${colour}${pct}%\033[0m")"
   fi
@@ -87,9 +87,9 @@ fi
 if [ -n "$rate_7d" ]; then
   pct=$(printf '%.0f' "$rate_7d")
   colour=$(colour_for_pct "$rate_7d")
-  if [ "$pct" -ge 100 ] && [ -n "$resets_7d" ]; then
+  if [ -n "$resets_7d" ]; then
     remaining=$(countdown "$resets_7d")
-    LINE2="${LINE2:+$LINE2 | }✨ All: $(printf '%b' "${colour}${pct}% resets:${remaining}\033[0m")"
+    LINE2="${LINE2:+$LINE2 | }✨ All: $(printf '%b' "${colour}${pct}% resets: ${remaining}\033[0m")"
   else
     LINE2="${LINE2:+$LINE2 | }✨ All: $(printf '%b' "${colour}${pct}%\033[0m")"
   fi
@@ -101,7 +101,7 @@ if [ -n "$rate_sonnet" ]; then
   colour=$(colour_for_pct "$rate_sonnet")
   if [ "$pct" -ge 100 ] && [ -n "$resets_sonnet" ]; then
     remaining=$(countdown "$resets_sonnet")
-    LINE2="${LINE2:+$LINE2 | }✨ Sonnet: $(printf '%b' "${colour}${pct}% resets:${remaining}\033[0m")"
+    LINE2="${LINE2:+$LINE2 | }✨ Sonnet: $(printf '%b' "${colour}${pct}% resets: ${remaining}\033[0m")"
   else
     LINE2="${LINE2:+$LINE2 | }✨ Sonnet: $(printf '%b' "${colour}${pct}%\033[0m")"
   fi
