@@ -10,6 +10,8 @@ rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty
 resets_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 rate_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 resets_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+rate_opus=$(echo "$input" | jq -r '.rate_limits.seven_day_opus.used_percentage // empty')
+resets_opus=$(echo "$input" | jq -r '.rate_limits.seven_day_opus.resets_at // empty')
 rate_sonnet=$(echo "$input" | jq -r '.rate_limits.seven_day_sonnet.used_percentage // empty')
 resets_sonnet=$(echo "$input" | jq -r '.rate_limits.seven_day_sonnet.resets_at // empty')
 cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
@@ -92,6 +94,18 @@ if [ -n "$rate_7d" ]; then
     LINE2="${LINE2:+$LINE2 | }✨ All: $(printf '%b' "${colour}${pct}% resets: ${remaining}\033[0m")"
   else
     LINE2="${LINE2:+$LINE2 | }✨ All: $(printf '%b' "${colour}${pct}%\033[0m")"
+  fi
+fi
+
+# Opus only — 7-day
+if [ -n "$rate_opus" ]; then
+  pct=$(printf '%.0f' "$rate_opus")
+  colour=$(colour_for_pct "$rate_opus")
+  if [ "$pct" -ge 100 ] && [ -n "$resets_opus" ]; then
+    remaining=$(countdown "$resets_opus")
+    LINE2="${LINE2:+$LINE2 | }✨ Opus: $(printf '%b' "${colour}${pct}% resets: ${remaining}\033[0m")"
+  else
+    LINE2="${LINE2:+$LINE2 | }✨ Opus: $(printf '%b' "${colour}${pct}%\033[0m")"
   fi
 fi
 
