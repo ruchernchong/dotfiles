@@ -5,6 +5,8 @@ input=$(cat)
 # Parse all fields from JSON input
 cwd=$(echo "$input" | jq -r '.cwd // .workspace.current_dir // empty')
 model=$(echo "$input" | jq -r '.model.display_name // empty')
+effort=$(echo "$input" | jq -r '.effort.level // empty')
+thinking=$(echo "$input" | jq -r '.thinking.enabled // empty')
 ctx_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 resets_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
@@ -59,6 +61,8 @@ fi
 # --- Line 1: Model, directory, git branch ---
 LINE1=""
 [ -n "$model" ] && LINE1="🤖 $model"
+[ -n "$effort" ] && LINE1="${LINE1:+$LINE1 | }🎚️ $(printf '\033[35m%s\033[0m' "$effort")"
+[ "$thinking" = "true" ] && LINE1="${LINE1:+$LINE1 | }💭 $(printf '\033[35mthinking\033[0m')"
 [ -n "$cwd" ] && LINE1="${LINE1:+$LINE1 | }📁 $(printf '\033[34m%s\033[0m' "${cwd##*/}")"
 [ -n "$branch" ] && LINE1="${LINE1:+$LINE1 | }🌿 $(printf '\033[36m%s\033[0m' "$branch")"
 
