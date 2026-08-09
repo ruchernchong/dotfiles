@@ -23,6 +23,7 @@ export PATH="$(brew --prefix)/opt/postgresql@18/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 # -----------------------------------------------------------------------------
 # External Tool Initialization
