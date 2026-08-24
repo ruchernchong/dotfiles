@@ -62,6 +62,11 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 source $HOME/.turso/env
 
+# Blacksmith
+if (( ${+commands[blacksmith]} )); then
+  source <(blacksmith completion zsh)
+fi
+
 # -----------------------------------------------------------------------------
 # Custom Aliases
 # -----------------------------------------------------------------------------
