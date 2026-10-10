@@ -10,8 +10,6 @@ thinking=$(echo "$input" | jq -r '.thinking.enabled // empty')
 ctx_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 lines_added=$(echo "$input" | jq -r '.cost.total_lines_added // empty')
 lines_removed=$(echo "$input" | jq -r '.cost.total_lines_removed // empty')
-dur_ms=$(echo "$input" | jq -r '.cost.total_duration_ms // empty')
-api_ms=$(echo "$input" | jq -r '.cost.total_api_duration_ms // empty')
 exceeds_200k=$(echo "$input" | jq -r '.exceeds_200k_tokens // empty')
 rate_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 resets_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
@@ -53,18 +51,6 @@ countdown() {
   fi
 }
 
-# Milliseconds -> human duration (83000 -> 1m23s, 45000 -> 45s)
-human_ms() {
-  local total_s=$(( $1 / 1000 ))
-  local mins=$(( total_s / 60 ))
-  local secs=$(( total_s % 60 ))
-  if [ "$mins" -gt 0 ]; then
-    echo "${mins}m${secs}s"
-  else
-    echo "${secs}s"
-  fi
-}
-
 # Git branch
 branch=""
 if [ -n "$cwd" ] && git -C "$cwd" --no-optional-locks rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -79,18 +65,11 @@ LINE1=""
 [ -n "$cwd" ] && LINE1="${LINE1:+$LINE1 | }📁 $(printf '\033[34m%s\033[0m' "${cwd##*/}")"
 [ -n "$branch" ] && LINE1="${LINE1:+$LINE1 | }🌿 $(printf '\033[36m%s\033[0m' "$branch")"
 
-# --- Line 2: Session metrics (cost, lines, durations, context, tokens) ---
+# --- Line 2: Session metrics (cost, lines, context) ---
 LINE2=""
 [ -n "$cost" ] && LINE2="💰 $(printf '\033[33m%s\033[0m' "$(printf '$%.2f' "$cost")")"
 if [ -n "$lines_added" ] || [ -n "$lines_removed" ]; then
   LINE2="${LINE2:+$LINE2 | }📝 $(printf '\033[32m+%s\033[0m/\033[31m-%s\033[0m' "${lines_added:-0}" "${lines_removed:-0}")"
-fi
-if [ -n "$dur_ms" ]; then
-  if [ -n "$api_ms" ]; then
-    LINE2="${LINE2:+$LINE2 | }⏱️ $(printf '\033[37melapsed %s · api wait %s\033[0m' "$(human_ms "$dur_ms")" "$(human_ms "$api_ms")")"
-  else
-    LINE2="${LINE2:+$LINE2 | }⏱️ $(printf '\033[37melapsed %s\033[0m' "$(human_ms "$dur_ms")")"
-  fi
 fi
 if [ -n "$ctx_pct" ]; then
   pct=$(printf '%.0f' "$ctx_pct")
