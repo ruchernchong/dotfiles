@@ -147,15 +147,15 @@
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
 	<key>BackgroundBlur</key>
-	<real>0.0</real>
+	<real>0.25</real>
 	<key>BackgroundColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
 	AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGjCwwTVSRudWxs0w0ODxARElVO
-	U1JHQlxOU0NvbG9yU3BhY2VWJGNsYXNzTxAmMC4xMTc2NDcwNTkzIDAuMTE3NjQ3MDU5
-	MyAwLjE4MDM5MjE2MQAQAYAC0hQVFhdaJGNsYXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9y
-	ohYYWE5TT2JqZWN0CBEaJCkyN0lMUVNXXWRqd36nqauwu8TMzwAAAAAAAAEBAAAAAAAA
-	ABkAAAAAAAAAAAAAAAAAAADY
+	U1JHQlxOU0NvbG9yU3BhY2VWJGNsYXNzTxAqMC4xMTc2NDcwNTkzIDAuMTE3NjQ3MDU5
+	MyAwLjE4MDM5MjE2MSAwLjkAEAGAAtIUFRYXWiRjbGFzc25hbWVYJGNsYXNzZXNXTlND
+	b2xvcqIWGFhOU09iamVjdAgRGiQpMjdJTFFTV11kand+q62vtL/I0NMAAAAAAAABAQAA
+	AAAAAAAZAAAAAAAAAAAAAAAAAAAA3A==
 	</data>
 	<key>BoldTextColor</key>
 	<data>
@@ -198,7 +198,7 @@
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
 	<key>name</key>
-	<string>catppuccin-mocha</string>
+	<string>Catppuccin Mocha</string>
 	<key>type</key>
 	<string>Window Settings</string>
 </dict>
